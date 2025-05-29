@@ -1,0 +1,120 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../generated/client"
+  seed     = "pnpm db:seed"
+}
+
+enum Role {
+  ADMIN
+  DOCTOR
+  PATIENT
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  IN_PROGRESS
+  DONE
+  CANCELLED
+}
+
+enum AppointmentType {
+  GENERAL_PRACTICE
+  CARDIOLOGY
+  VACCINATION
+  RADIOLOGY
+  DERMATOLOGY
+  PEDIATRICS
+  ORTHOPEDICS
+  DENTISTRY
+  NEUROLOGY
+  GYNECOLOGY
+  OPHTHALMOLOGY
+}
+
+model User {
+  id                  String                 @id @default(cuid())
+  email               String                 @unique @db.VarChar(255)
+  phone               String?                @unique @db.VarChar(20)
+  password            String
+  firstName           String                 @db.VarChar(100)
+  lastName            String                 @db.VarChar(100)
+  role                Role
+  gender              Gender
+  image               Bytes?
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+  isEmailVerified     Boolean                @default(false)
+  emailVerifiedAt     DateTime?
+  isPhoneVerified     Boolean                @default(false)
+  phoneVerifiedAt     DateTime?
+  isDoctorVerified    Boolean                @default(false)
+  doctorVerifiedAt    DateTime?
+  lastLogin           DateTime?
+  availability        DoctorAvailability[]
+  specializations     DoctorSpecialization[]
+  doctorAppointments  Appointment[]          @relation("DoctorAppointments")
+  patientAppointments Appointment[]          @relation("PatientAppointments")
+  passwordReset       PasswordReset?
+
+  @@index([email])
+  @@index([role])
+  @@index([isDoctorVerified])
+}
+
+model PasswordReset {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model DoctorSpecialization {
+  id        String          @id @default(cuid())
+  doctor    User            @relation(fields: [doctorId], references: [id])
+  doctorId  String
+  type      AppointmentType
+  createdAt DateTime        @default(now())
+
+  @@unique([doctorId, type])
+}
+
+model DoctorAvailability {
+  id       String @id @default(cuid())
+  doctor   User   @relation(fields: [doctorId], references: [id])
+  doctorId String
+
+  dayOfWeek Int
+  startTime String
+  endTime   String
+
+  createdAt DateTime @default(now())
+
+  @@unique([doctorId, dayOfWeek, startTime, endTime])
+}
+
+model Appointment {
+  id           String            @id @default(cuid())
+  doctor       User              @relation("DoctorAppointments", fields: [doctorId], references: [id])
+  doctorId     String
+  patient      User              @relation("PatientAppointments", fields: [patientId], references: [id])
+  patientId    String
+  status       AppointmentStatus @default(SCHEDULED)
+  type         AppointmentType
+  price        Decimal           @db.Decimal(10, 2)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  notes        String?
+  scheduledFor DateTime?
+}

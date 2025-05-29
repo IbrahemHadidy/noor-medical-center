@@ -1,0 +1,588 @@
+{
+  "Metadata": {
+    "Brand": "Noor Medical Center",
+    "Home": {
+      "title": "Welcome to Noor Medical Center",
+      "description": "Where Healing Shines — Comprehensive healthcare services tailored for you."
+    }
+  },
+  "Layout": {
+    "Logo": {
+      "name": "Noor",
+      "slogan": "Where Healing Shines",
+      "loading": "Please wait while we prepare your experience..."
+    },
+    "DisplayMode": {
+      "toggle": "Toggle theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "Sidebar": {
+      "dashboard": "Dashboard",
+      "home": "Home",
+      "doctors": "Doctors",
+      "patients": "Patients",
+      "reservations": "Reservations",
+      "appointments": "Appointments",
+      "verify-doctors": "Verify Doctors",
+      "availability": "Availability",
+      "history": "History",
+      "closeSidebar": "Close Sidebar",
+      "login": "Login",
+      "register": "Register",
+      "logout": "Logout",
+      "Role": {
+        "ADMIN": "Admin",
+        "DOCTOR": "Doctor",
+        "PATIENT": "Patient"
+      }
+    },
+    "Footer": {
+      "copyright": "Noor Medical Center. All rights reserved."
+    },
+    "Table": {
+      "goToPrevious": "Go to previous page",
+      "goToNext": "Go to next page",
+      "goToFirst": "Go to first page",
+      "goToLast": "Go to last page",
+      "goToPage": "Go to page {page}",
+      "rowsPerPage": "Rows per page",
+      "page": "page",
+      "of": "of",
+      "row(s)": "row(s)",
+      "selected": "selected",
+      "view": "View",
+      "resetFilters": "Reset filters",
+      "toggleColumns": "Toggle columns",
+      "noResults": "No results",
+      "asc": "ASC",
+      "desc": "DESC",
+      "sort": "Sort",
+      "hideColumn": "Hide column"
+    },
+    "Date": {
+      "today": "Today",
+      "clear": "Clear",
+      "startTime": "Start Time",
+      "endTime": "End Time"
+    }
+  },
+  "Login": {
+    "backgroundAlt": "Medical background",
+    "title": "Medical Portal",
+    "subtitle": "Secure access to medical resources",
+    "formAriaLabel": "Login form",
+    "emailOrPhone": "Email or Phone",
+    "emailOrPhonePlaceholder": "example@domain.com or +201234567890",
+    "password": "Password",
+    "passwordPlaceholder": "••••••••",
+    "authenticating": "Authenticating...",
+    "signInButton": "Sign in to Noor Portal",
+    "dontHaveAccount": "Don’t have an account?",
+    "registerNow": "Register now",
+    "Errors": {
+      "identifierRequired": "Email or phone number is required",
+      "invalidIdentifier": "Must be a valid email or phone number",
+      "passwordLength": "Password must be at least {minLength} characters"
+    }
+  },
+  "Register": {
+    "backgroundAlt": "Medical background",
+    "title": "Medical Registration",
+    "subtitle": "Join our healthcare community",
+    "formAriaLabel": "Register form",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Noor",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Al-Imran",
+    "email": "Email",
+    "emailPlaceholder": "professional@medical.com",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+201234567890",
+    "password": "Password",
+    "passwordPlaceholder": "••••••••",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "role": "Role",
+    "doctor": "Doctor",
+    "patient": "Patient",
+    "creatingAccount": "Creating Account...",
+    "createAccountButton": "Create a Noor Portal account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "Errors": {
+      "requiredField": "This field is required",
+      "firstNameLength": "First name must be at least {min} characters",
+      "lastNameLength": "Last name must be at least {min} characters",
+      "invalidEmail": "Invalid email address",
+      "passwordMinLength": "Password must be at least {min} characters",
+      "passwordMaxLength": "Password must be at most {max} characters",
+      "passwordComplexity": "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+      "phoneTooShort": "Phone number is too short",
+      "invalidPhone": "Invalid phone number",
+      "genderRequired": "Gender is required",
+      "invalidGender": "Invalid gender value",
+      "roleRequired": "Role is required",
+      "invalidRole": "Invalid role value"
+    }
+  },
+  "Admin": {
+    "title": "Manage Users",
+    "manageUsers": "Manage Users",
+    "loading": "Loading users...",
+    "verifyDoctors": "Verify Doctors",
+    "verify": "Verify",
+    "noPendingDoctors": "No pending doctor applications.",
+    "doctorVerifyLoading": "Verifying doctor...",
+    "doctorVerifySuccess": "Doctor verified successfully.",
+    "doctorVerifyError": "Failed to verify doctor.",
+    "manageAppointments": "Manage Appointments",
+    "Filters": {
+      "doctor": "Doctor",
+      "patient": "Patient",
+      "status": "Status",
+      "date": "Date"
+    },
+    "Errors": {
+      "loadingFailed": "Failed to load users.",
+      "noUsersFound": "No users found."
+    }
+  },
+  "AdminAppointments": {
+    "title": "Appointments",
+    "Columns": {
+      "doctor": "Doctor",
+      "patient": "Patient",
+      "status": "Status",
+      "type": "Type",
+      "scheduledFor": "Scheduled For",
+      "actions": "Actions"
+    },
+    "Stats": {
+      "total": "Total Appointments",
+      "today": "Today's Appointments",
+      "completed": "Completed Appointments",
+      "cancelled": "Cancelled Appointments"
+    },
+    "StatusOptions": {
+      "all": "All",
+      "scheduled": "Scheduled",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "Actions": {
+      "cancel": "Cancel",
+      "markDone": "Mark as Done"
+    },
+    "Type": {
+      "GENERAL_PRACTICE": "General Practice",
+      "CARDIOLOGY": "Cardiology",
+      "VACCINATION": "Vaccinations",
+      "RADIOLOGY": "Radiology",
+      "DERMATOLOGY": "Dermatology",
+      "PEDIATRICS": "Pediatrics",
+      "ORTHOPEDICS": "Orthopedics",
+      "DENTISTRY": "Dentistry",
+      "NEUROLOGY": "Neurology",
+      "GYNECOLOGY": "Gynecology",
+      "OPHTHALMOLOGY": "Ophthalmology"
+    },
+    "Status": {
+      "SCHEDULED": "Scheduled",
+      "IN_PROGRESS": "In Progress",
+      "DONE": "Done",
+      "CANCELLED": "Cancelled"
+    },
+    "Filters": {
+      "doctor": "Doctor name",
+      "patient": "Patient name",
+      "date": "Date",
+      "status": "Status",
+      "allStatuses": "All Status"
+    },
+    "loading": "Loading appointments...",
+    "noResults": "No appointments found."
+  },
+  "AdminUsers": {
+    "title": "Manage Users",
+    "Roles": {
+      "admin": "Admin",
+      "doctor": "Doctors",
+      "patient": "Patients"
+    },
+    "Columns": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "createdAt": "Created At",
+      "doctorVerified": "Doctor Verified",
+      "emailVerified": "Email Verified",
+      "actions": "Actions"
+    },
+    "Actions": {
+      "verify": "Verify",
+      "deactivate": "Deactivate"
+    },
+    "Role": {
+      "DOCTOR": "Doctor",
+      "PATIENT": "Patient",
+      "ADMIN": "Admin"
+    },
+    "Filters": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "createdAt": "Created At",
+      "isDoctorVerified": "Verified Doctors Only",
+      "isEmailVerified": "Verified Emails Only"
+    },
+    "RoleOptions": {
+      "all": "All",
+      "admin": "Admin",
+      "doctor": "Doctors",
+      "patient": "Patients"
+    },
+    "loading": "Loading users..."
+  },
+  "DoctorAvailability": {
+    "title": "Manage Availability",
+    "addSlot": "Add Slot",
+    "remove": "Remove",
+    "dayLabel": "Day",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "selectDay": "Select day",
+    "currentSlots": "Current Availability Slots",
+    "noSlots": "No time slots added yet",
+    "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "Errors": {
+      "notAuthenticated": "You must be logged in to manage your availability."
+    }
+  },
+  "PatientHistory": {
+    "title": "My Appointments",
+    "Columns": {
+      "doctor": "Doctor",
+      "type": "Type",
+      "scheduledFor": "Scheduled For",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "Actions": {
+      "cancel": "Cancel"
+    },
+    "Type": {
+      "ALL": "All",
+      "GENERAL_PRACTICE": "General Practice",
+      "CARDIOLOGY": "Cardiology",
+      "VACCINATION": "Vaccinations",
+      "RADIOLOGY": "Radiology",
+      "DERMATOLOGY": "Dermatology",
+      "PEDIATRICS": "Pediatrics",
+      "ORTHOPEDICS": "Orthopedics",
+      "DENTISTRY": "Dentistry",
+      "NEUROLOGY": "Neurology",
+      "GYNECOLOGY": "Gynecology",
+      "OPHTHALMOLOGY": "Ophthalmology"
+    },
+    "Filters": {
+      "doctor": "Doctor name",
+      "type": "Appointment Type",
+      "status": "Status",
+      "scheduledFor": "Scheduled For"
+    },
+    "Status": {
+      "SCHEDULED": "Scheduled",
+      "IN_PROGRESS": "In Progress",
+      "DONE": "Done",
+      "CANCELLED": "Cancelled"
+    },
+    "StatusOptions": {
+      "all": "All",
+      "scheduled": "Scheduled",
+      "done": "Done",
+      "cancelled": "Cancelled"
+    },
+    "loading": "Loading appointments..."
+  },
+  "DoctorNotes": {
+    "loading": "Loading appointment…",
+    "notFound": "Appointment not found.",
+    "Appointment with": "Appointment with",
+    "notesLabel": "Medical Notes / Prescription",
+    "saveNotes": "Save Notes",
+    "saving": "Saving…"
+  },
+  "Dashboard": {
+    "welcome": "Welcome back, {name}!",
+    "manageAppointments": "Manage Appointments",
+    "Filters": {
+      "names": "Filter names...",
+      "types": "Filter types...",
+      "statuses": "Filter statuses...",
+      "dates": "Filter date..."
+    },
+    "Aria": {
+      "bookAppointment": "Book new appointment",
+      "manageAvailability": "Manage availability schedule"
+    },
+    "Common": {
+      "unknown": "Unknown"
+    },
+    "loading": "Loading dashboard...",
+    "Errors": {
+      "notAuthenticated": "You must be logged in to view the dashboard.",
+      "loadingFailed": "Failed to load dashboard."
+    },
+    "Doctor": {
+      "upcomingTitle": "Your Upcoming Appointments",
+      "noAppointments": "No upcoming appointments.",
+      "noAppointmentsDescription": "You have no upcoming appointments at the moment. Please check back later.",
+      "verificationStatus": "Verification Status",
+      "verified": "You are verified by admin.",
+      "notVerified": "Your account is pending verification.",
+      "bookLink": "Book a New Appointment",
+      "bookNew": "Book Now",
+      "availability": "Availability",
+      "manageAvailability": "Manage Availability",
+      "appointmentStats": "Appointments Statistics",
+      "appointmentTypes": "Appointments by Type",
+      "yourAppointments": "Your Appointments",
+      "viewAppointments": "View Appointments",
+      "Chart": {
+        "monthlyTitle": "Monthly Appointments",
+        "typeTitle": "Appointment Types",
+        "patients": "Patients",
+        "consultations": "Consultations",
+        "followUps": "Follow-ups",
+        "emergency": "Emergency",
+        "month": "Month",
+        "appointments": "Appointments",
+        "Type": {
+          "GENERAL_PRACTICE": "General Practice",
+          "CARDIOLOGY": "Cardiology",
+          "VACCINATION": "Vaccinations",
+          "RADIOLOGY": "Radiology",
+          "DERMATOLOGY": "Dermatology",
+          "PEDIATRICS": "Pediatrics",
+          "ORTHOPEDICS": "Orthopedics",
+          "DENTISTRY": "Dentistry",
+          "NEUROLOGY": "Neurology",
+          "GYNECOLOGY": "Gynecology",
+          "OPHTHALMOLOGY": "Ophthalmology"
+        }
+      }
+    },
+    "Patient": {
+      "nextAppointment": "Next Appointment",
+      "nextAppointmentWith": "Next Appointment with",
+      "noUpcoming": "You have no upcoming appointments.",
+      "bookLink": "Book a New Appointment",
+      "bookNew": "Book Now",
+      "historyLink": "View Appointment History",
+      "viewHistory": "View History",
+      "Type": {
+        "GENERAL_PRACTICE": "General Practice",
+        "CARDIOLOGY": "Cardiology",
+        "VACCINATION": "Vaccinations",
+        "RADIOLOGY": "Radiology",
+        "DERMATOLOGY": "Dermatology",
+        "PEDIATRICS": "Pediatrics",
+        "ORTHOPEDICS": "Orthopedics",
+        "DENTISTRY": "Dentistry",
+        "NEUROLOGY": "Neurology",
+        "GYNECOLOGY": "Gynecology",
+        "OPHTHALMOLOGY": "Ophthalmology"
+      },
+      "StatusOptions": {
+        "SCHEDULED": "Scheduled",
+        "DONE": "Completed",
+        "CANCELLED": "Cancelled",
+        "IN_PROGRESS": "In Progress"
+      },
+      "Chart": {
+        "monthlyTitle": "Appointments Over Time",
+        "typeTitle": "Appointment Types",
+        "noData": "No appointment history available"
+      },
+      "Common": {
+        "fetchError": "Failed to load data"
+      }
+    },
+    "Admin": {
+      "pendingDoctors": "Doctors Awaiting Verification",
+      "verifyNow": "Verify Doctors",
+      "totalDoctors": "Total Doctors",
+      "totalPatients": "Total Patients",
+      "todayAppointments": "Today's Appointments",
+      "cancelledAppointments": "Cancelled Appointments",
+      "completedAppointments": "Completed Appointments",
+      "pendingAppointments": "Pending Appointments",
+      "totalAppointments": "Total Appointments",
+      "Chart": {
+        "systemOverview": "System Overview",
+        "statusBreakdown": "Appointment Status Breakdown",
+        "doctors": "Doctors",
+        "patients": "Patients",
+        "today": "Today's Appts",
+        "total": "Total Appts",
+        "noData": "No data available",
+        "Status": {
+          "scheduled": "Scheduled",
+          "inProgress": "In Progress",
+          "done": "Done",
+          "cancelled": "Cancelled"
+        }
+      }
+    },
+    "Table": {
+      "Type": {
+        "GENERAL_PRACTICE": "General Practice",
+        "CARDIOLOGY": "Cardiology",
+        "VACCINATION": "Vaccinations",
+        "RADIOLOGY": "Radiology",
+        "DERMATOLOGY": "Dermatology",
+        "PEDIATRICS": "Pediatrics",
+        "ORTHOPEDICS": "Orthopedics",
+        "DENTISTRY": "Dentistry",
+        "NEUROLOGY": "Neurology",
+        "GYNECOLOGY": "Gynecology",
+        "OPHTHALMOLOGY": "Ophthalmology"
+      },
+      "Status": {
+        "SCHEDULED": "Scheduled",
+        "IN_PROGRESS": "In Progress",
+        "DONE": "Done",
+        "CANCELLED": "Cancelled"
+      }
+    }
+  },
+  "Booking": {
+    "pageTitle": "Book an Appointment",
+    "dateLabel": "Select Date",
+    "bookingInProgress": "Booking in progress…",
+    "doctorLabel": "Select a Doctor",
+    "selectDoctor": "Choose a doctor...",
+    "timeLabel": "Available Time Slots",
+    "appointmentTypeLabel": "Appointment Type",
+    "appointmentTypePlaceholder": "e.g. Annual Checkup",
+    "appointmentTitleLabel": "Appointment Title",
+    "appointmentTitlePlaceholder": "e.g. Follow-up visit",
+    "appointmentDeptLabel": "Department",
+    "appointmentDeptPlaceholder": "Select department",
+    "priceLabel": "Price",
+    "pricePlaceholder": "Enter price",
+    "reasonLabel": "Reason for Visit",
+    "reasonPlaceholder": "Describe purpose (min 10 characters)",
+    "submitBooking": "Book Appointment",
+    "typeRequired": "Please specify the appointment type",
+    "reasonMin": "Please enter at least 10 characters",
+    "loading": "Loading doctors...",
+    "loadingSlots": "Loading available time slots...",
+    "datePlaceholder": "Select date",
+    "noAvailableSlots": "No available time slots for this date",
+    "searchDoctor": "Search doctors...",
+    "noDoctorsFound": "No doctors found",
+    "successTitle": "Booking Confirmed!",
+    "successMessage": "Your appointment has been successfully scheduled",
+    "specialtyLabel": "Medical Specialty",
+    "selectSpecialty": "Select a medical specialty",
+    "Department": {
+      "GENERAL_PRACTICE": "General Practice",
+      "CARDIOLOGY": "Cardiology",
+      "VACCINATION": "Vaccinations",
+      "RADIOLOGY": "Radiology",
+      "DERMATOLOGY": "Dermatology",
+      "PEDIATRICS": "Pediatrics",
+      "ORTHOPEDICS": "Orthopedics",
+      "DENTISTRY": "Dentistry",
+      "NEUROLOGY": "Neurology",
+      "GYNECOLOGY": "Gynecology",
+      "OPHTHALMOLOGY": "Ophthalmology"
+    },
+    "Status": {
+      "SCHEDULED": "Scheduled",
+      "IN_PROGRESS": "In Progress",
+      "DONE": "Done",
+      "CANCELLED": "Cancelled"
+    },
+    "Errors": {
+      "slotsLoadingFailed": "Failed to load time slots. Please try again.",
+      "doctorsLoadingFailed": "Failed to load doctors. Please try again.",
+      "typeRequired": "Please specify the appointment type",
+      "reasonMin": "Please enter at least 10 characters",
+      "priceRequired": "Please enter a price",
+      "pricePositive": "Price must be zero or positive"
+    }
+  },
+  "Home": {
+    "Hero": {
+      "headline": "Best Care with Noor Medical Center",
+      "subheadline": "Where Healing Shines - Comprehensive healthcare services tailored for you.",
+      "getStarted": "Get Started"
+    },
+    "About": {
+      "title": "About Noor Medical Center",
+      "description": "Noor Medical Center is dedicated to providing high-quality healthcare services in a compassionate and modern environment. Our experienced team is committed to your well-being and comfort."
+    },
+    "Services": {
+      "title": "Our Medical Services",
+      "Items": {
+        "GeneralPractice": {
+          "title": "General Practice",
+          "description": "Comprehensive healthcare for all ages by experienced general physicians."
+        },
+        "Cardiology": {
+          "title": "Cardiology",
+          "description": "Heart checkups, diagnostics, and specialist care with state-of-the-art technology."
+        },
+        "Vaccinations": {
+          "title": "Vaccinations",
+          "description": "Safe, fast, and reliable vaccinations for children and adults."
+        },
+        "Radiology": {
+          "title": "Radiology",
+          "description": "Modern imaging services including X-rays, CT scans, and ultrasound."
+        }
+      }
+    },
+    "WhyChooseUs": {
+      "title": "Why Choose Noor Medical Center",
+      "Items": {
+        "ExperiencedStaff": {
+          "title": "Experienced Staff",
+          "description": "Our team of board-certified doctors and nurses ensure top-quality care."
+        },
+        "ModernEquipment": {
+          "title": "Modern Equipment",
+          "description": "We use state-of-the-art diagnostic and treatment technologies."
+        },
+        "24_7Care": {
+          "title": "24/7 Care",
+          "description": "Round-the-clock support for emergencies and patient inquiries."
+        },
+        "PatientSatisfaction": {
+          "title": "Patient Satisfaction",
+          "description": "Over 95% of our patients recommend us to family and friends."
+        }
+      }
+    },
+    "Testimonials": {
+      "title": "What Our Patients Say"
+    },
+    "Contact": {
+      "title": "Visit Us",
+      "description": "Reach out or visit our clinic during working hours.",
+      "address": "23 Salah Salem Street, Port Said, Egypt",
+      "phone": "+20 100 123 4567",
+      "hours": "Open daily from 9 AM to 9 PM"
+    },
+    "CTA": {
+      "title": "Ready to book your appointment?",
+      "description": "Join our growing family of satisfied patients today.",
+      "button": "Get Started"
+    }
+  }
+}

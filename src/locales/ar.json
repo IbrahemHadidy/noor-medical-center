@@ -1,0 +1,590 @@
+{
+  "Metadata": {
+    "Brand": "مركز نور الطبي",
+    "Home": {
+      "title": "مرحبًا بك في مركز نور الطبي",
+      "description": "حيث يشع النور شفاءً — خدمات رعاية صحية شاملة مصممة من أجلك."
+    }
+  },
+  "Layout": {
+    "Logo": {
+      "name": "نــــــــــــــــو    ر",
+      "slogan": "حـــــيـــــث يـــــســـــطـــــع الـــــشـــــفـــــاء",
+      "loading": "يــرجــى الانــتــظــار بــيــنــمــا نــقــوم بــتــحــضــيــر تــجــربــتــكــم..."
+    },
+    "DisplayMode": {
+      "toggle": "تبديل الوضع",
+      "light": "فاتح",
+      "dark": "ظلام",
+      "system": "النظام"
+    },
+    "Sidebar": {
+      "dashboard": "لوحة التحكم",
+      "home": "الرئيسية",
+      "doctors": "الأطباء",
+      "patients": "المرضى",
+      "reservations": "الحجوزات",
+      "appointments": "المواعيد",
+      "verify-doctors": "الأطباء الموثقين",
+      "availability": "المواعيد المتاحة",
+      "history": "التاريخ",
+      "settings": "الإعدادات",
+      "closeSidebar": "اغلاق القائمة الجانبية",
+      "login": "تسجيل الدخول",
+      "register": "انشاء حساب جديد",
+      "logout": "تسجيل الخروج",
+      "Role": {
+        "ADMIN": "مدير",
+        "DOCTOR": "طبيب",
+        "PATIENT": "مريض"
+      }
+    },
+    "Footer": {
+      "copyright": "مركز نور الطبي. جميع الحقوق محفوظة."
+    },
+    "Table": {
+      "goToPrevious": "الصفحة السابقة",
+      "goToNext": "الصفحة التالية",
+      "goToFirst": "الصفحة الاولى",
+      "goToLast": "الصفحة الاخيرة",
+      "goToPage": "الصفحة {page}",
+      "rowsPerPage": "صف لكل صفحة",
+      "page": "صفحة",
+      "of": "من",
+      "view": "عرض",
+      "resetFilters": "اعادة تعيين الفلاتر",
+      "row(s)": "صف",
+      "selected": "محدد",
+      "toggleColumns": "تبديل الاعمدة",
+      "noResults": "لا يوجد نتائج",
+      "asc": "تصاعدي",
+      "desc": "تنازلي",
+      "sort": "ترتيب",
+      "hideColumn": "اخفاء العمود"
+    },
+    "Date": {
+      "today": "اليوم",
+      "clear": "مسح",
+      "startTime": "وقت البدء",
+      "endTime": "وقت الانتهاء"
+    }
+  },
+  "Login": {
+    "backgroundAlt": "خلفية طبية",
+    "title": "البوابة الطبية",
+    "subtitle": "الوصول الآمن إلى الموارد الطبية",
+    "formAriaLabel": "نموذج تسجيل الدخول",
+    "emailOrPhone": "البريد الإلكتروني أو الهاتف",
+    "emailOrPhonePlaceholder": "example@domain.com أو +201234567890",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "authenticating": "جاري التوثيق...",
+    "signInButton": "تسجيل الدخول إلى بوابة نور",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "registerNow": "سجل الآن",
+    "Errors": {
+      "identifierRequired": "البريد الإلكتروني أو رقم الهاتف مطلوب",
+      "invalidIdentifier": "يجب أن يكون بريدًا إلكترونيًا أو رقم هاتف صالحًا",
+      "passwordLength": "يجب أن تتكون كلمة المرور من {minLength} أحرف على الأقل"
+    }
+  },
+  "Register": {
+    "backgroundAlt": "خلفية طبية",
+    "title": "التسجيل الطبي",
+    "subtitle": "انضم إلى مجتمع الرعاية الصحية",
+    "formAriaLabel": "نموذج التسجيل",
+    "firstName": "الاسم الاول",
+    "firstNamePlaceholder": "نور",
+    "lastName": "الاسم الاخير",
+    "lastNamePlaceholder": "آل عمران",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "professional@medical.com",
+    "phone": "رقم الهاتف",
+    "phonePlaceholder": "+201234567890",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "••••••••",
+    "gender": "الجنس",
+    "male": "ذكر",
+    "female": "أنثى",
+    "role": "الدور",
+    "doctor": "طبيب",
+    "patient": "مريض",
+    "creatingAccount": "جاري إنشاء الحساب...",
+    "createAccountButton": "إنشاء حساب في بوابة نور",
+    "alreadyHaveAccount": "هل لديك حساب؟",
+    "signIn": "تسجيل الدخول",
+    "Errors": {
+      "requiredField": "هذا الحقل مطلوب",
+      "firstNameLength": "يجب أن يكون الاسم الأول على الأقل {min} أحرف",
+      "lastNameLength": "يجب أن يكون الاسم الأخير على الأقل {min} أحرف",
+      "invalidEmail": "بريد إلكتروني غير صالح",
+      "passwordMinLength": "يجب أن تكون كلمة المرور على الأقل {min} أحرف",
+      "passwordMaxLength": "يجب ألا تزيد كلمة المرور عن {max} حرف",
+      "passwordComplexity": "يجب أن تحتوي كلمة المرور على حرف كبير وحرف صغير ورقم واحد على الأقل",
+      "phoneTooShort": "رقم الهاتف قصير جدًا",
+      "invalidPhone": "رقم هاتف غير صالح",
+      "genderRequired": "الجنس مطلوب",
+      "invalidGender": "قيمة الجنس غير صالحة",
+      "roleRequired": "الدور مطلوب",
+      "invalidRole": "قيمة الدور غير صالحة"
+    }
+  },
+  "Admin": {
+    "manageUsers": "إدارة المستخدمين",
+    "loading": "جارٍ تحميل المستخدمين...",
+    "verifyDoctors": "تحقق من الأطباء",
+    "verify": "تحقق",
+    "noPendingDoctors": "لا يوجد طلبات طبيب جديدة.",
+    "doctorVerifyLoading": "جارٍ التحقق من الطبيب...",
+    "doctorVerifySuccess": "تم التحقق من الطبيب بنجاح.",
+    "doctorVerifyError": "فشل في التحقق من الطبيب.",
+    "manageAppointments": "إدارة المواعيد",
+    "Filters": {
+      "doctor": "طبيب",
+      "patient": "مريض",
+      "status": "حالة",
+      "date": "تاريخ"
+    },
+    "Errors": {
+      "loadingFailed": "فشل في تحميل المستخدمين.",
+      "noUsersFound": "لم يتم العثور على مستخدمين."
+    }
+  },
+  "AdminAppointments": {
+    "title": "المواعيد",
+    "Columns": {
+      "doctor": "الطبيب",
+      "patient": "المريض",
+      "status": "الحالة",
+      "type": "النوع",
+      "scheduledFor": "الموعد",
+      "actions": "الاجراءات"
+    },
+    "Stats": {
+      "total": "إجمالي المواعيد",
+      "today": "مواعيد اليوم",
+      "completed": "المواعيد المكتملة",
+      "cancelled": "المواعيد الملغاة"
+    },
+    "StatusOptions": {
+      "all": "كل الحالات",
+      "scheduled": "مجدولة",
+      "done": "مكتملة",
+      "cancelled": "ملغية"
+    },
+    "Actions": {
+      "cancel": "الغاء",
+      "markDone": "تسجيل الموعد كمكتمل"
+    },
+    "Type": {
+      "GENERAL_PRACTICE": "علاج عام",
+      "CARDIOLOGY": "علاج قلبي",
+      "VACCINATION": "التعقيم",
+      "RADIOLOGY": "علاج دوائي",
+      "DERMATOLOGY": "علاج دماغي",
+      "PEDIATRICS": "علاج اطفال",
+      "ORTHOPEDICS": "علاج عقمي",
+      "DENTISTRY": "علاج اسنان",
+      "NEUROLOGY": "علاج عصبي",
+      "GYNECOLOGY": "علاج جيني",
+      "OPHTHALMOLOGY": "علاج عيوني"
+    },
+    "Status": {
+      "SCHEDULED": "مجدول",
+      "IN_PROGRESS": "قيد التنفيذ",
+      "DONE": "مكتمل",
+      "CANCELLED": "ملغي"
+    },
+    "Filters": {
+      "doctor": "اسم الطبيب",
+      "patient": "اسم المريض",
+      "date": "التاريخ",
+      "status": "الحالة",
+      "allStatuses": "كل الحالات"
+    },
+    "loading": "جاري تحميل المواعيد...",
+    "noResults": "لا توجد مواعيد."
+  },
+  "AdminUsers": {
+    "title": "إدارة المستخدمين",
+    "Roles": {
+      "admin": "الادمن",
+      "doctor": "الأطباء",
+      "patient": "المرضى"
+    },
+    "Columns": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "createdAt": "تاريخ التسجيل",
+      "doctorVerified": "طبيب محقق",
+      "emailVerified": "حساب محقق",
+      "actions": "إجراءات"
+    },
+    "Actions": {
+      "verify": "تحقق",
+      "deactivate": "تعطيل"
+    },
+    "Role": {
+      "DOCTOR": "طبيب",
+      "PATIENT": "مريض",
+      "ADMIN": "مدير"
+    },
+    "Filters": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "createdAt": "تاريخ التسجيل",
+      "isDoctorVerified": "الأطباءالمحققين فقط",
+      "isEmailVerified": "الحسابات المحققة فقط"
+    },
+    "RoleOptions": {
+      "all": "الكل",
+      "admin": "الادمن",
+      "doctor": "الأطباء",
+      "patient": "المرضى"
+    },
+    "loading": "جاري تحميل المستخدمين..."
+  },
+  "DoctorAvailability": {
+    "title": "إدارة الأوقات المتاحة",
+    "addSlot": "أضف وقتًا",
+    "remove": "إزالة",
+    "dayLabel": "اليوم",
+    "startTime": "الوقت المبدئي",
+    "endTime": "الوقت النهائي",
+    "selectDay": "حدد يومًا",
+    "currentSlots": "الأوقات المتاحة الحالية",
+    "noSlots": "لا يوجد أوقات متاحة حتى الان",
+    "days": ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"],
+    "Errors": {
+      "notAuthenticated": "يجب تسجيل الدخول لعرض لوحة التحكم."
+    }
+  },
+  "PatientHistory": {
+    "title": "مواعيدي",
+    "Columns": {
+      "doctor": "الطبيب",
+      "type": "النوع",
+      "scheduledFor": "تاريخ الموعد",
+      "status": "الحالة",
+      "actions": "إجراءات"
+    },
+    "Actions": {
+      "cancel": "إلغاء"
+    },
+    "Type": {
+      "ALL": "الكل",
+      "GENERAL_PRACTICE": "علاج عام",
+      "CARDIOLOGY": "علاج قلبي",
+      "VACCINATION": "التعقيم",
+      "RADIOLOGY": "علاج دوائي",
+      "DERMATOLOGY": "علاج دماغي",
+      "PEDIATRICS": "علاج اطفال",
+      "ORTHOPEDICS": "علاج عقمي",
+      "DENTISTRY": "علاج اسنان",
+      "NEUROLOGY": "علاج عصبي",
+      "GYNECOLOGY": "علاج جيني",
+      "OPHTHALMOLOGY": "علاج عيوني"
+    },
+    "Filters": {
+      "doctor": "اسم الطبيب",
+      "type": "التخصص",
+      "status": "الحالة",
+      "scheduledFor": "تاريخ الموعد"
+    },
+    "Status": {
+      "SCHEDULED": "مجدولة",
+      "IN_PROGRESS": "قيد التنفيذ",
+      "DONE": "تمت",
+      "CANCELLED": "ملغاة"
+    },
+    "StatusOptions": {
+      "all": "الكل",
+      "scheduled": "مجدولة",
+      "done": "تمت",
+      "cancelled": "ملغاة"
+    },
+    "loading": "جاري تحميل المواعيد..."
+  },
+  "DoctorNotes": {
+    "loading": "جاري تحميل الموعد…",
+    "notFound": "الموعد غير موجود.",
+    "Appointment with": "الموعد مع",
+    "notesLabel": "ملاحظات / وصفة طبية",
+    "saveNotes": "حفظ الملاحظات",
+    "saving": "جارٍ الحفظ…"
+  },
+  "Dashboard": {
+    "welcome": "مرحباً، {name}!",
+    "manageAppointments": "إدارة المواعيد",
+    "Filters": {
+      "names": "تصفية حسب الأسماء...",
+      "types": "تصفية حسب الأنواع...",
+      "statuses": "تصفية حسب الحالات...",
+      "dates": "تصفية حسب التاريخ..."
+    },
+    "Aria": {
+      "bookAppointment": "احجز موعدًا جديدًا",
+      "manageAvailability": "إدارة جدول التوفر"
+    },
+    "Common": {
+      "unknown": "غير معروف"
+    },
+    "loading": "جاري تحميل لوحة التحكم...",
+    "Errors": {
+      "notAuthenticated": "يجب تسجيل الدخول لعرض لوحة التحكم.",
+      "loadingFailed": "فشل تحميل لوحة التحكم."
+    },
+    "Doctor": {
+      "upcomingTitle": "مواعيدك القادمة",
+      "noAppointments": "لا توجد مواعيد قادمة.",
+      "noAppointmentsDescription": "ليس لديك مواعيد قادمة في الوقت الحالي. يرجى التحقق لاحقًا.",
+      "verificationStatus": "حالة التحقق",
+      "verified": "تم التحقق من حسابك من قبل الإدارة.",
+      "notVerified": "حسابك في انتظار التحقق.",
+      "bookLink": "حجز موعد جديد",
+      "bookNew": "احجز الآن",
+      "availability": "التوفر",
+      "manageAvailability": "إدارة التوفر",
+      "appointmentStats": "إحصائيات المواعيد",
+      "appointmentTypes": "المواعيد حسب النوع",
+      "yourAppointments": "مواعيدك",
+      "viewAppointments": "اظهار المواعيد",
+      "Chart": {
+        "monthlyTitle": "المواعيد الشهرية",
+        "typeTitle": "أنواع المواعيد",
+        "patients": "المرضى",
+        "consultations": "استشارات",
+        "followUps": "متابعات",
+        "emergency": "حالات طارئة",
+        "month": "شهر",
+        "appointments": "المواعيد",
+        "Type": {
+          "GENERAL_PRACTICE": "ممارسة عامة",
+          "CARDIOLOGY": "أمراض القلب",
+          "VACCINATION": "التطعيمات",
+          "RADIOLOGY": "الأشعة",
+          "DERMATOLOGY": "الأمراض الجلدية",
+          "PEDIATRICS": "طب الأطفال",
+          "ORTHOPEDICS": "العظام",
+          "DENTISTRY": "طب الأسنان",
+          "NEUROLOGY": "الأعصاب",
+          "GYNECOLOGY": "أمراض النساء",
+          "OPHTHALMOLOGY": "طب العيون"
+        }
+      }
+    },
+    "Patient": {
+      "nextAppointment": "الموعد التالي",
+      "nextAppointmentWith": "الموعد التالي مع",
+      "noUpcoming": "ليس لديك مواعيد قادمة.",
+      "bookLink": "حجز موعد جديد",
+      "bookNew": "احجز الآن",
+      "historyLink": "عرض سجل المواعيد",
+      "viewHistory": "عرض السجل",
+      "Type": {
+        "GENERAL_PRACTICE": "ممارسة عامة",
+        "CARDIOLOGY": "أمراض القلب",
+        "VACCINATION": "التطعيمات",
+        "RADIOLOGY": "الأشعة",
+        "DERMATOLOGY": "الأمراض الجلدية",
+        "PEDIATRICS": "طب الأطفال",
+        "ORTHOPEDICS": "العظام",
+        "DENTISTRY": "طب الأسنان",
+        "NEUROLOGY": "الأعصاب",
+        "GYNECOLOGY": "أمراض النساء",
+        "OPHTHALMOLOGY": "طب العيون"
+      },
+      "StatusOptions": {
+        "SCHEDULED": "مجدول",
+        "DONE": "مكتمل",
+        "CANCELLED": "ملغى",
+        "IN_PROGRESS": "قيد التنفيذ"
+      },
+      "Chart": {
+        "monthlyTitle": "المواعيد حسب الوقت",
+        "typeTitle": "أنواع المواعيد",
+        "noData": "لا يوجد سجل مواعيد متاح"
+      },
+      "Common": {
+        "fetchError": "فشل تحميل البيانات"
+      }
+    },
+    "Admin": {
+      "pendingDoctors": "الأطباء في انتظار التحقق",
+      "verifyNow": "تحقق الآن",
+      "totalDoctors": "إجمالي عدد الأطباء",
+      "totalPatients": "إجمالي عدد المرضى",
+      "todayAppointments": "عدد المواعيد اليومية",
+      "cancelledAppointments": "عدد المواعيد الملغية",
+      "completedAppointments": "عدد المواعيد المكتملة",
+      "pendingAppointments": "عدد المواعيد المعلقة",
+      "totalAppointments": "إجمالي المواعيد",
+      "Chart": {
+        "systemOverview": "نظرة عامة على النظام",
+        "statusBreakdown": "تفصيل حالة المواعيد",
+        "doctors": "الأطباء",
+        "patients": "المرضى",
+        "today": "مواعيد اليوم",
+        "total": "إجمالي المواعيد",
+        "noData": "لا يوجد بيانات متاحة",
+        "Status": {
+          "scheduled": "مجدول",
+          "inProgress": "قيد التنفيذ",
+          "done": "منجز",
+          "cancelled": "ملغى"
+        }
+      }
+    },
+    "Table": {
+      "Type": {
+        "GENERAL_PRACTICE": "الطب العام",
+        "CARDIOLOGY": "أمراض القلب",
+        "VACCINATION": "التطعيمات",
+        "RADIOLOGY": "الأشعة",
+        "DERMATOLOGY": "أمراض الجلد",
+        "PEDIATRICS": "طب الأطفال",
+        "ORTHOPEDICS": "جراحة العظام",
+        "DENTISTRY": "طب الأسنان",
+        "NEUROLOGY": "طب الأعصاب",
+        "GYNECOLOGY": "طب النساء والتوليد",
+        "OPHTHALMOLOGY": "طب العيون"
+      },
+      "Status": {
+        "SCHEDULED": "مجدول",
+        "IN_PROGRESS": "قيد التنفيذ",
+        "DONE": "منجز",
+        "CANCELLED": "ملغى"
+      }
+    }
+  },
+  "Booking": {
+    "pageTitle": "حجز موعد",
+    "dateLabel": "اختر التاريخ",
+    "bookingInProgress": "جاري الحجز…",
+    "doctorLabel": "اختر الطبيب",
+    "selectDoctor": "اختر طبيبًا...",
+    "timeLabel": "الأوقات المتاحة",
+    "appointmentTitleLabel": "عنوان الموعد",
+    "appointmentTitlePlaceholder": "مثلاً: متابعة",
+    "appointmentDeptLabel": "القسم",
+    "appointmentDeptPlaceholder": "اختر القسم",
+    "appointmentTypeLabel": "نوع الموعد",
+    "appointmentTypePlaceholder": "مثل فحص سنوي",
+    "reasonLabel": "سبب الزيارة",
+    "reasonPlaceholder": "صف الغرض (10 أحرف على الأقل)",
+    "priceLabel": "السعر",
+    "pricePlaceholder": "ادخل السعر",
+    "submitBooking": "احجز الموعد",
+    "typeRequired": "يرجى تحديد نوع الموعد",
+    "reasonMin": "الرجاء إدخال 10 أحرف على الأقل",
+    "loading": "جار التحميل...",
+    "loadingSlots": "جاري تحميل المواعيد المتاحة...",
+    "noAvailableSlots": "لا توجد مواعيد متاحة لهذا اليوم",
+    "datePlaceholder": "اختر التاريخ",
+    "searchDoctor": "ابحث عن طبيب...",
+    "noDoctorsFound": "لا يوجد اطباء متاحين",
+    "successTitle": "تم تأكيد الحجز!",
+    "successMessage": "تم حجز الموعد بنجاح",
+    "specialtyLabel": "التخصص",
+    "selectSpecialty": "اختر التخصص...",
+    "Department": {
+      "GENERAL_PRACTICE": "الطب العام",
+      "CARDIOLOGY": "أمراض القلب",
+      "VACCINATION": "التطعيمات",
+      "RADIOLOGY": "الأشعة",
+      "DERMATOLOGY": "أمراض الجلد",
+      "PEDIATRICS": "طب الأطفال",
+      "ORTHOPEDICS": "جراحة العظام",
+      "DENTISTRY": "طب الأسنان",
+      "NEUROLOGY": "طب الأعصاب",
+      "GYNECOLOGY": "طب النساء والتوليد",
+      "OPHTHALMOLOGY": "طب العيون"
+    },
+    "Status": {
+      "SCHEDULED": "مجدول",
+      "IN_PROGRESS": "قيد التنفيذ",
+      "DONE": "منجز",
+      "CANCELLED": "ملغى"
+    },
+    "Errors": {
+      "slotsLoadingFailed": "فشل تحميل المواعيد. يرجى المحاولة مرة اخرى.",
+      "doctorsLoadingFailed": "فشل تحميل الأطباء. يرجى المحاولة مرة اخرى.",
+      "typeRequired": "يرجى تحديد نوع الموعد",
+      "reasonMin": "الرجاء إدخال 10 أحرف على الأقل",
+      "priceLabel": "السعر (دولار)",
+      "pricePlaceholder": "مثلاً: 50.00",
+      "priceRequired": "يرجى إدخال السعر",
+      "pricePositive": "يجب أن يكون السعر صفراً أو أكثر"
+    }
+  },
+  "Home": {
+    "Hero": {
+      "headline": "أفضل رعاية مع مركز نور الطبي",
+      "subheadline": "حيث يشع النور شفاءً - خدمات رعاية صحية شاملة مصممة من أجلك.",
+      "getStarted": "ابدأ الآن"
+    },
+    "About": {
+      "title": "عن مركز نور الطبي",
+      "description": "يكرس مركز نور الطبي جهوده لتقديم خدمات رعاية صحية عالية الجودة في بيئة حديثة ومريحة. يلتزم فريقنا الخبير برعايتكم وراحتكم."
+    },
+    "Services": {
+      "title": "خدماتنا الطبية",
+      "Items": {
+        "GeneralPractice": {
+          "title": "الطبيب العام",
+          "description": "رعاية صحية شاملة لجميع الأعمار يقدمها أطباء عامون ذوو خبرة."
+        },
+        "Cardiology": {
+          "title": "أمراض القلب",
+          "description": "فحوصات القلب، التشخيص، ورعاية متخصصة بأحدث التقنيات."
+        },
+        "Vaccinations": {
+          "title": "التطعيمات",
+          "description": "تطعيمات آمنة وسريعة وموثوقة للأطفال والبالغين."
+        },
+        "Radiology": {
+          "title": "الأشعة",
+          "description": "خدمات تصوير حديثة تشمل الأشعة السينية والتصوير المقطعي والتراساوند."
+        }
+      }
+    },
+    "WhyChooseUs": {
+      "title": "لماذا تختار مركز نور الطبي؟",
+      "Items": {
+        "ExperiencedStaff": {
+          "title": "طاقم ذو خبرة",
+          "description": "فريقنا من الأطباء والممرضين المعتمدين يضمن لك رعاية عالية الجودة."
+        },
+        "ModernEquipment": {
+          "title": "أحدث الأجهزة",
+          "description": "نستخدم أحدث تقنيات التشخيص والعلاج."
+        },
+        "24_7Care": {
+          "title": "رعاية 24/7",
+          "description": "دعم طارئ واستفسارات مرضى على مدار الساعة."
+        },
+        "PatientSatisfaction": {
+          "title": "رضا المرضى",
+          "description": "أكثر من 95٪ من مرضانا يوصون بنا لأسرهم وأصدقائهم."
+        }
+      }
+    },
+    "Testimonials": {
+      "title": "آراء مرضانا"
+    },
+    "Contact": {
+      "title": "زرنا",
+      "description": "تواصل معنا أو زر العيادة خلال ساعات العمل.",
+      "address": "٢٣ شارع صلاح سالم، بورسعيد، مصر",
+      "phone": "+٢٠١٠٠١٢٣٤٥٦٧",
+      "hours": "يومياً من ٩ صباحاً إلى ٩ مساءً"
+    },
+    "CTA": {
+      "title": "هل أنت مستعد لحجز موعدك؟",
+      "description": "انضم إلى عائلتنا المتنامية من المرضى الراضين اليوم.",
+      "button": "ابدأ الآن"
+    }
+  }
+}
