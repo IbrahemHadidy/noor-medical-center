@@ -35,7 +35,7 @@ import {
   Settings2,
 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import type { DateRange } from 'react-day-picker';
 import { Button } from './button';
 import { RangeDatePicker, SingleDatePicker } from './date-picker';
@@ -159,6 +159,21 @@ export function DataTablePagination<TData>({
   const pageCount = table.getPageCount();
   const currentPage = table.getState().pagination.pageIndex + 1;
 
+  const handlePageSizeChange = useCallback(
+    (value: string) => {
+      table.setPageSize(Number(value));
+    },
+    [table]
+  );
+
+  const handlePageInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const page = Math.max(1, Math.min(pageCount, Number(e.target.value) || 1));
+      table.setPageIndex(page - 1);
+    },
+    [table, pageCount]
+  );
+
   return (
     <div className="flex items-center justify-between border-t-1 px-2 py-1">
       <div className="text-muted-foreground flex-1 text-sm">
@@ -170,9 +185,7 @@ export function DataTablePagination<TData>({
           <p className="text-sm font-medium">{t('rowsPerPage')}</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
-            onValueChange={(value) => {
-              table.setPageSize(Number(value));
-            }}
+            onValueChange={handlePageSizeChange}
           >
             <SelectTrigger dir={isRtl ? 'rtl' : 'ltr'} className="h-8! w-[70px]">
               <SelectValue placeholder={table.getState().pagination.pageSize} />
@@ -223,10 +236,7 @@ export function DataTablePagination<TData>({
               min={1}
               max={pageCount}
               value={currentPage}
-              onChange={(e) => {
-                const page = Math.max(1, Math.min(pageCount, Number(e.target.value) || 1));
-                table.setPageIndex(page - 1);
-              }}
+              onChange={handlePageInputChange}
               className="h-8 min-w-15 text-start [&::-webkit-inner-spin-button]:appearance-none"
               onBlur={(e) => {
                 if (!e.target.value) {
@@ -324,9 +334,12 @@ export function DataTable<TData, TValue>({
 
   const isRtl = locale === 'ar';
 
+  const memoizedColumns = useMemo(() => columns, [columns]);
+  const memoizedData = useMemo(() => data, [data]);
+
   const table = useReactTable({
-    data,
-    columns,
+    data: memoizedData,
+    columns: memoizedColumns,
     manualPagination: true,
     manualSorting: true,
     pageCount: Math.ceil(totalItems / paginationState.pageSize),
@@ -336,12 +349,19 @@ export function DataTable<TData, TValue>({
       columnVisibility,
       rowSelection,
     },
-    onPaginationChange: onPaginationChange,
-    onSortingChange: onSortingChange,
+    onPaginationChange,
+    onSortingChange,
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const handleFilterChange = useCallback(
+    (id: string, value: string | Date | DateRange | boolean) => {
+      onFilterChange?.(id, value);
+    },
+    [onFilterChange]
+  );
 
   return (
     <>
@@ -359,9 +379,8 @@ export function DataTable<TData, TValue>({
         {filters.length > 0 && (
           <div className="flex w-full flex-col gap-2 md:flex-row md:items-center">
             {filters.map((filter) => {
-              const handleChange = (value: string | Date | DateRange | boolean) => {
-                onFilterChange?.(filter.id, value);
-              };
+              const onChange = (value: string | Date | DateRange | boolean) =>
+                handleFilterChange(filter.id, value);
 
               if (filter.type === 'boolean') {
                 return (
@@ -374,7 +393,7 @@ export function DataTable<TData, TValue>({
                   >
                     <Switch
                       checked={(filterValues?.[filter.id] || false) as boolean}
-                      onCheckedChange={handleChange}
+                      onCheckedChange={onChange}
                     />
                     <Label>{filter.placeholder}</Label>
                   </div>
@@ -386,7 +405,7 @@ export function DataTable<TData, TValue>({
                   <div key={filter.id} className={cn('flex-1', filter.className)}>
                     <SingleDatePicker
                       value={filterValues?.[filter.id] as Date}
-                      onChange={handleChange}
+                      onChange={onChange}
                       placeholder={filter.placeholder}
                       showTime
                     />
@@ -399,7 +418,7 @@ export function DataTable<TData, TValue>({
                   <div key={filter.id} className={cn('flex-1', filter.className)}>
                     <RangeDatePicker
                       value={filterValues?.[filter.id] as DateRange}
-                      onChange={handleChange}
+                      onChange={onChange}
                       placeholder={filter.placeholder}
                       showTime
                     />
@@ -412,7 +431,7 @@ export function DataTable<TData, TValue>({
                   <Select
                     key={filter.id}
                     value={(filterValues?.[filter.id] || '') as string}
-                    onValueChange={handleChange}
+                    onValueChange={onChange}
                   >
                     <SelectTrigger
                       dir={isRtl ? 'rtl' : 'ltr'}
@@ -437,7 +456,7 @@ export function DataTable<TData, TValue>({
                   type={filter.type}
                   placeholder={filter.placeholder}
                   value={(filterValues?.[filter.id] || '') as string}
-                  onChange={(e) => handleChange(e.target.value)}
+                  onChange={(e) => onChange(e.target.value)}
                   className={cn('flex-1', filter.className)}
                 />
               );
@@ -452,7 +471,7 @@ export function DataTable<TData, TValue>({
                       className="h-9 flex-1"
                       onClick={() => {
                         filters.forEach((filter) => {
-                          onFilterChange?.(filter.id, '');
+                          handleFilterChange(filter.id, '');
                         });
                       }}
                       disabled={!Object.values(filterValues || {}).some(Boolean)}

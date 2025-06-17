@@ -116,7 +116,14 @@ export default function LoginPage() {
               />
             </fieldset>
 
-            {error && <p className="text-destructive text-sm">{error}</p>}
+            {error && (
+              <p
+                role="alert"
+                className="text-destructive rounded-md border border-red-200 bg-red-50 px-4 py-2 text-center text-sm dark:border-red-800 dark:bg-red-900"
+              >
+                {error}
+              </p>
+            )}
 
             {/* Submit Button */}
             <Button type="submit" className="w-full text-white" disabled={isLoading}>

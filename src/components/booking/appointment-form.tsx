@@ -119,12 +119,15 @@ export default function AppointmentForm({
 
         {/* Error Messages */}
         {(error || form.formState.errors.root) && (
-          <div className="space-y-2">
-            {error && <p className="text-destructive text-sm">{error}</p>}
-            {form.formState.errors.root && (
-              <p className="text-destructive text-sm">{form.formState.errors.root.message}</p>
+          <p
+            role="alert"
+            className="text-destructive space-y-1 rounded-md border border-red-200 bg-red-50 px-4 py-2 text-center text-sm dark:border-red-800 dark:bg-red-900"
+          >
+            {error && <span>{error}</span>}
+            {form.formState.errors.root?.message && (
+              <span>{form.formState.errors.root.message}</span>
             )}
-          </div>
+          </p>
         )}
 
         <Button type="submit" disabled={isLoading} className="w-full">

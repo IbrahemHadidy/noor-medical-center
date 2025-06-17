@@ -7,11 +7,12 @@ import {
   updateFilters,
   updatePagination,
   updateSorting,
-} from '@/lib/features/doctor/appointments/doctor-appointments-slice';
+} from '@/lib/features/doctor/appointments/doctor-appointments.slice';
 import { useAppDispatch, useAppSelector } from '@/lib/store';
 import { deserializeDateRange, serializeDateRange } from '@/lib/utils/serialize-date-range';
 import type { PaginationState, SortingState, Updater } from '@tanstack/react-table';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 import type { DateRange } from 'react-day-picker';
 import { columns } from './columns';
 import { filters as filtersInputs } from './filters';
@@ -29,6 +30,9 @@ export function DoctorAppointments() {
   };
 
   const debouncedPatient = useDebouncedValue(filters.patient, 300);
+
+  const memoizedColumns = useMemo(() => columns(t), [t]);
+  const memoizedFilters = useMemo(() => filtersInputs(t), [t]);
 
   //------------------------------- Queries -------------------------------//
   const {
@@ -77,10 +81,10 @@ export function DoctorAppointments() {
       <h1 className="text-2xl font-bold">{t('title')}</h1>
 
       <DataTable
-        columns={columns(t)}
+        columns={memoizedColumns}
         data={response?.data ?? []}
         totalItems={response?.total ?? 0}
-        filters={filtersInputs(t)}
+        filters={memoizedFilters}
         pageSizeOptions={[5, 10, 20]}
         isLoading={loadingAppointments}
         isFetching={fetchingAppointments}

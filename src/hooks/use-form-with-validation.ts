@@ -1,9 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { type FieldValues, useForm } from 'react-hook-form';
-import { type ZodSchema } from 'zod';
+import { useForm, type FieldValues, type UseFormReturn } from 'react-hook-form';
+import { type ZodTypeAny } from 'zod';
 
-export function useFormWithValidation<T extends FieldValues>(schema: ZodSchema<T>) {
-  return useForm<T>({
+export function useFormWithValidation<TFieldValues extends FieldValues = FieldValues>(
+  schema: ZodTypeAny
+): UseFormReturn<TFieldValues> {
+  return useForm<TFieldValues>({
     resolver: zodResolver(schema),
   });
 }

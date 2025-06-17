@@ -1,5 +1,5 @@
 import { useCreateAppointmentMutation } from '@/lib/api/endpoints/dashboard';
-import { handleApiError } from '@/lib/utils/api-error-handler';
+import { getErrorMessage } from '@/lib/utils/get-error-message';
 import { type AppointmentData } from '@/lib/validations/appointment';
 import { type AppointmentType } from '@generated/client';
 import { toast } from 'sonner';
@@ -21,25 +21,21 @@ export const useAppointmentSubmit = () => {
     scheduledFor: string;
     specialty: AppointmentType | null;
   }) => {
-    try {
-      await createAppointment({
-        appointmentType: specialty as AppointmentType,
-        notes: data.reason,
-        price: data.price.toString(),
-        patientId,
-        doctorId,
-        scheduledFor,
-      }).unwrap();
-      toast.success('Booking successful');
-    } catch (err) {
-      handleApiError(err);
-    }
+    await createAppointment({
+      appointmentType: specialty as AppointmentType,
+      notes: data.reason,
+      price: data.price.toString(),
+      patientId,
+      doctorId,
+      scheduledFor,
+    }).unwrap();
+    toast.success('Booking successful');
   };
 
   return {
     handleAppointmentSubmit,
     isLoading,
-    error: error && 'data' in error ? (error.data as Error).message : undefined,
+    error: getErrorMessage(error),
     isSuccess,
     reset,
   };

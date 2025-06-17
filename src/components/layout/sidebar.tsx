@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/sidebar';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useLogoutMutation } from '@/lib/api/endpoints/auth';
-import { clearUser } from '@/lib/features/auth/auth-slice';
+import { clearUser } from '@/lib/features/auth/auth.slice';
 import { Link, useRouter } from '@/lib/i18n/navigation';
 import { useAppDispatch, useAppSelector } from '@/lib/store';
 import { Role } from '@generated/client';
@@ -194,12 +194,12 @@ export function Sidebar() {
         <Separator />
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>{t('dashboard')}</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {user &&
-                items(t, user.role).map((item) => (
+        {user && (
+          <SidebarGroup>
+            <SidebarGroupLabel>{t('dashboard')}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {items(t, user.role).map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
                       <Link href={item.url} className="flex w-full items-center gap-2">
@@ -209,9 +209,10 @@ export function Sidebar() {
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        )}
       </SidebarContent>
       <SidebarFooter>
         <Separator />

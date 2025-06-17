@@ -76,12 +76,32 @@ A fictional full-stack web application built for demonstration purposes only, no
 
 ```bash
 /src
-  /app              # App router pages
-  /features         # Redux slices & RTK endpoints
-  /components       # UI components
-  /lib              # Utils & helpers
-  /hooks            # Custom React hooks
-  /translations     # next-intl translations
+  /app                    # App router pages
+    /[locale]             # Locale-specific pages
+    /api                  # API routes
+    /api-doc              # API docs page
+    /global.css           # Global styles (Tailwind CSS, shadcn/ui)
+  /assets                 # Static assets
+  /components             # UI components
+    /ui                   # Shared UI components
+    /utils                # Utility components
+    /layout               # Layout components
+    /...                  # Page-specific components
+    /store-provider.tsx   # Redux store provider
+  /hooks                  # Custom React hooks
+    /submitions           # Form submission hooks
+    /...                  # Other utility hooks
+  /locales                # next-intl translations
+  /lib                    # Shared logic
+    /api                  # API routes (RTK Query)
+    /features             # Redux slices
+    /i18n                 # i18n config
+    /prisma               # Prisma schema, client, seed, and migrations
+    /types                # Type definitions
+    /utils                # Utility functions
+    /validations          # Form validation schemas
+    /store.ts             # Redux store
+    /swagger.ts           # Swagger config
 ```
 
 ---

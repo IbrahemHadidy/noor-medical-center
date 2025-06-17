@@ -7,11 +7,12 @@ import {
   updateFilters,
   updatePagination,
   updateSorting,
-} from '@/lib/features/admin/users/admin-users-slice';
+} from '@/lib/features/admin/users/admin-users.slice';
 import { useAppDispatch, useAppSelector } from '@/lib/store';
 import { deserializeDateRange, serializeDateRange } from '@/lib/utils/serialize-date-range';
 import type { PaginationState, SortingState, Updater } from '@tanstack/react-table';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 import type { DateRange } from 'react-day-picker';
 import { columns } from './columns';
 import { filters as filtersInputs } from './filters';
@@ -30,6 +31,9 @@ export function AdminUsers() {
 
   const debouncedName = useDebouncedValue(filters.name, 300);
   const debouncedEmail = useDebouncedValue(filters.email, 300);
+
+  const memoizedColumns = useMemo(() => columns(t), [t]);
+  const memoizedFilters = useMemo(() => filtersInputs(t), [t]);
 
   //------------------------------- Queries -------------------------------//
   const {
@@ -81,10 +85,10 @@ export function AdminUsers() {
       <h1 className="text-2xl font-bold">{t('title')}</h1>
 
       <DataTable
-        columns={columns(t)}
+        columns={memoizedColumns}
         data={response?.data ?? []}
         totalItems={response?.total ?? 0}
-        filters={filtersInputs(t)}
+        filters={memoizedFilters}
         pageSizeOptions={[10, 20, 50]}
         isLoading={isLoading}
         isFetching={isFetching}

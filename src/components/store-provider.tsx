@@ -1,7 +1,7 @@
 'use client';
 
 import Loading from '@/app/[locale]/loading';
-import { initializeAuth } from '@/lib/features/auth/auth-slice';
+import { initializeAuth } from '@/lib/features/auth/auth.slice';
 import { type AppStore, makeStore } from '@/lib/store';
 import { useEffect, useRef, useState } from 'react';
 import { Provider } from 'react-redux';
