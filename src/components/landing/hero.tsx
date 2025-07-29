@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import heroBg from '@/assets/hero-bg.webp';
+import heroBg from '@/assets/images/hero-bg.webp';
 
 export function Hero() {
   const t = useTranslations('Home.Hero');

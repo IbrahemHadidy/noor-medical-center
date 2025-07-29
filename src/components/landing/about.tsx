@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import clinicImage from '@/assets/about-us.webp';
+import clinicImage from '@/assets/images/about-us.webp';
 
 export function About() {
   const t = useTranslations('Home.About');

@@ -80,18 +80,22 @@ A fictional full-stack web application built for demonstration purposes only, no
     /[locale]             # Locale-specific pages
     /api                  # API routes
     /api-doc              # API docs page
-    /global.css           # Global styles (Tailwind CSS, shadcn/ui)
   /assets                 # Static assets
   /components             # UI components
     /ui                   # Shared UI components
+      /effects            # UI effects
+      /...                # UI primitives
     /utils                # Utility components
-    /layout               # Layout components
-    /...                  # Page-specific components
-    /store-provider.tsx   # Redux store provider
+    /layout               # Layout
+    /pages                # Page-level UI components (index.tsx and related components)
+    /providers            # Providers
+      /store-provider.tsx # Redux store provider
   /hooks                  # Custom React hooks
     /submitions           # Form submission hooks
-    /...                  # Other utility hooks
+    /...                  # Other hooks
   /locales                # next-intl translations
+  /styles                 # Styles 
+    /global.css           # Global styles (Tailwind CSS, shadcn/ui)
   /lib                    # Shared logic
     /api                  # API routes (RTK Query)
     /features             # Redux slices

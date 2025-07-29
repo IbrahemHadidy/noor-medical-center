@@ -30,15 +30,6 @@ export const getApiDocs = async () => {
         },
       },
       security: [{ BearerAuth: [] }],
-      // tags: [
-      //   { name: 'Auth', description: 'Authentication endpoints' },
-      //   { name: 'Appointments', description: 'Manage appointments' },
-      //   { name: 'Dashboard', description: 'Stats and overview for admin' },
-      //   { name: 'Users', description: 'User-related operations' },
-      //   { name: 'Admin', description: 'Admin-only operations' },
-      //   { name: 'Doctors', description: 'Doctor-related operations' },
-      //   { name: 'Patients', description: 'Patient-related operations' },
-      // ],
     },
   });
   return spec;

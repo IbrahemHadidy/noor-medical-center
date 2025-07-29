@@ -17,11 +17,13 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { useLogoutMutation } from '@/lib/api/endpoints/auth';
 import { clearUser } from '@/lib/features/auth/auth.slice';
-import { Link, useRouter } from '@/lib/i18n/navigation';
+import { Link, usePathname, useRouter } from '@/lib/i18n/navigation';
 import { useAppDispatch, useAppSelector } from '@/lib/store';
-import { Role } from '@generated/client';
+import { cn } from '@/lib/utils/cn';
+import { Role } from '@prisma/client';
 import {
   Calendar,
   CheckCircle,
@@ -36,6 +38,8 @@ import {
 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
+import { DisplayModeSelector } from './display-mode-selector';
+import { LanguageSelector } from './language-selector';
 import { Logo } from './logo';
 
 type SidebarItem = {
@@ -67,7 +71,7 @@ const items = (
       },
       {
         title: t('verify-doctors'),
-        url: '/dashboard/admin/reservations',
+        url: '/dashboard/admin/verify-doctors',
         icon: CheckCircle,
       },
     ];
@@ -108,27 +112,29 @@ const items = (
 export function Sidebar() {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations('Layout.Sidebar');
+  const isMobile = useIsMobile();
   const { toggleSidebar, setOpen } = useSidebar();
   const [logout, { isLoading }] = useLogoutMutation();
-  const { user } = useAppSelector((state) => state.auth);
-  const [isInitialized, setIsInitialized] = useState<boolean>(false);
+  const { user, isInitialized } = useAppSelector((state) => state.auth);
+  const [isSidebarInitialized, setIsSidebarInitialized] = useState<boolean>(false);
 
   const isRTL = locale === 'ar';
 
   useEffect(() => {
-    if (user && !isInitialized) {
+    if (user && !isSidebarInitialized) {
       setOpen(true);
-      setIsInitialized(true);
+      setIsSidebarInitialized(true);
     }
-  }, [isInitialized, setOpen, user]);
+  }, [isSidebarInitialized, setOpen, user]);
 
   const handleLogout = async () => {
     await logout().unwrap();
     dispatch(clearUser());
     setOpen(false);
-    router.push('/');
+    router.push('/login');
   };
 
   return (
@@ -137,8 +143,75 @@ export function Sidebar() {
         <Link href="/" className="flex w-full justify-center">
           <Logo className="h-24 w-auto" />
         </Link>
+        {isMobile && (
+          <>
+            <Separator />
+            <div className="mt-4 flex flex-col gap-4 px-4">
+              <LanguageSelector />
+              <DisplayModeSelector />
+            </div>
+          </>
+        )}
         <Separator />
+      </SidebarHeader>
+      <SidebarContent>
         {user ? (
+          <SidebarGroup>
+            <SidebarGroupLabel>{t('dashboard')}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {items(t, user.role).map((item) => {
+                  const isActive = pathname === item.url || pathname.endsWith(item.url + '/');
+
+                  return (
+                    <SidebarMenuItem
+                      key={item.url}
+                      className={cn(
+                        'rounded-md transition-colors',
+                        isActive && 'bg-primary/10 text-primary'
+                      )}
+                    >
+                      <SidebarMenuButton asChild>
+                        <Link
+                          href={item.url}
+                          className={cn(
+                            'flex w-full items-center gap-2 px-3 py-2',
+                            isActive && 'font-semibold'
+                          )}
+                        >
+                          <item.icon className="h-4 w-4" />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ) : (
+          <div className="flex w-full flex-1 flex-col items-center justify-center space-y-4 p-6 text-center">
+            <p className="text-md font-medium">{t('pleaseLoginTitle')}</p>
+            <Link href="/login" className="w-full">
+              <Button className="w-full">{t('login')}</Button>
+            </Link>
+          </div>
+        )}
+      </SidebarContent>
+      <SidebarFooter>
+        <Separator />
+        {!isInitialized ? (
+          <div className="flex w-full animate-pulse items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="bg-muted h-10 w-10 rounded-full" />
+              <div className="flex flex-col gap-1">
+                <div className="bg-muted h-4 w-32 rounded" />
+                <div className="bg-muted/70 h-3 w-20 rounded" />
+              </div>
+            </div>
+            <div className="bg-muted h-8 w-8 rounded" />
+          </div>
+        ) : user ? (
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center gap-2">
               <Avatar>
@@ -191,30 +264,6 @@ export function Sidebar() {
             </Link>
           </div>
         )}
-        <Separator />
-      </SidebarHeader>
-      <SidebarContent>
-        {user && (
-          <SidebarGroup>
-            <SidebarGroupLabel>{t('dashboard')}</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {items(t, user.role).map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url} className="flex w-full items-center gap-2">
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
-      </SidebarContent>
-      <SidebarFooter>
         <Separator />
         <SidebarMenuButton onClick={toggleSidebar} className="cursor-pointer">
           <PanelLeftIcon />

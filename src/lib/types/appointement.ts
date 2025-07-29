@@ -1,4 +1,4 @@
-import type { AppointmentStatus, AppointmentType, Prisma } from '@generated/client';
+import type { AppointmentStatus, AppointmentType, Prisma } from '@prisma/client';
 
 export type AppointmentWithUser = Prisma.AppointmentGetPayload<{
   include: {

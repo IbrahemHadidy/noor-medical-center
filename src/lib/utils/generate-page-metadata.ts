@@ -1,11 +1,12 @@
-import fallbackOgImage from '@/assets/og.webp';
+import fallbackOgImage from '@/assets/images/og.webp';
+import type en from '@/locales/en.json';
 import { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
 type MetadataConfig = {
   locale: Locale;
-  namespace: 'Metadata.Home';
+  namespace: `Metadata.${Exclude<keyof typeof en.Metadata, 'Brand'>}`;
   path: string;
   ogImage?: {
     src?: string;
@@ -15,7 +16,6 @@ type MetadataConfig = {
   dynamicData?: {
     title?: string;
     description?: string;
-    price?: number;
     images?: {
       url: string;
       width?: number;
@@ -83,12 +83,8 @@ export default async function generatePageMetadata(config: MetadataConfig): Prom
     },
     other: {
       'geo.region': 'EG',
-      'geo.placename': 'Cairo',
+      'geo.placename': 'Port Said',
       'og:locale:alternate': locale === 'ar' ? 'en_US' : 'ar_EG',
-      ...(dynamicData?.price && {
-        'product:price:amount': dynamicData.price.toString(),
-        'product:price:currency': 'EGP',
-      }),
       ...config.other,
     },
   };

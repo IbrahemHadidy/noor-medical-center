@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma/prisma';
 import { getSession } from '@/lib/utils/auth';
 import { createNameFilters, splitNameQuery } from '@/lib/utils/name-filter';
-import type { AppointmentStatus, AppointmentType, Prisma } from '@generated/client';
+import type { AppointmentStatus, AppointmentType, Prisma } from '@prisma/client';
 import { NextResponse, type NextRequest } from 'next/server';
 
 /**

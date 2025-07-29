@@ -1,4 +1,4 @@
-import { Prisma } from '@generated/client';
+import { Prisma } from '@prisma/client';
 
 export function splitNameQuery(query: string | null): string[] {
   if (!query) return [];

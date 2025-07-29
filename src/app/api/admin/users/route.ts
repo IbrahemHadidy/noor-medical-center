@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma/prisma';
 import { getAuthUserOrThrow } from '@/lib/utils/auth';
-import type { Prisma, Role } from '@generated/client';
+import type { Prisma, Role } from '@prisma/client';
 import { type NextRequest, NextResponse } from 'next/server';
 
 /**
@@ -26,10 +26,22 @@ import { type NextRequest, NextResponse } from 'next/server';
  *         required: false
  *         description: Number of items per page (default 10)
  *       - in: query
+ *         name: emailVerifiedAt
+ *         schema:
+ *           type: boolean
+ *         required: false
+ *         description: Filter users by email verification status (based on emailVerifiedAt not being null)
+ *       - in: query
+ *         name: doctorVerifiedAt
+ *         schema:
+ *           type: boolean
+ *         required: false
+ *         description: Filter users by doctor verification status (based on doctorVerifiedAt not being null)
+ *       - in: query
  *         name: sortBy
  *         schema:
  *           type: string
- *           enum: [name, email, role, createdAt, isDoctorVerified, isEmailVerified]
+ *           enum: [name, email, role, createdAt, emailVerifiedAt, doctorVerifiedAt]
  *         required: false
  *         description: Field to sort by (default createdAt)
  *       - in: query
@@ -58,12 +70,6 @@ import { type NextRequest, NextResponse } from 'next/server';
  *           type: string
  *         required: false
  *         description: Filter by email (case-insensitive contains)
- *       - in: query
- *         name: isDoctorVerified
- *         schema:
- *           type: boolean
- *         required: false
- *         description: Filter by doctor verification status (true/false)
  *       - in: query
  *         name: startDate
  *         schema:
@@ -128,8 +134,8 @@ export async function GET(req: NextRequest) {
       'email',
       'role',
       'createdAt',
-      'isDoctorVerified',
-      'isEmailVerified',
+      'doctorVerifiedAt',
+      'emailVerifiedAt',
     ] as const;
     const sortBy = searchParams.get('sortBy');
     const validSortBy = allowedSortBy.includes(sortBy as (typeof allowedSortBy)[number])
@@ -169,36 +175,38 @@ export async function GET(req: NextRequest) {
     const role = searchParams.get('role') as Role | null;
     const email = searchParams.get('email');
     const nameQuery = searchParams.get('name');
-    const isDoctorVerifiedParam = searchParams.get('isDoctorVerified');
-    const isEmailVerifiedParam = searchParams.get('isEmailVerified');
+    const emailVerifiedAtParam = searchParams.get('emailVerifiedAt');
+    const doctorVerifiedAtParam = searchParams.get('doctorVerifiedAt');
 
     // Process name query
     const nameTerms = nameQuery ? nameQuery.trim().split(/\s+/) : [];
 
-    // Process isDoctorVerified
-    let isDoctorVerified: boolean | undefined;
-    if (isDoctorVerifiedParam !== null) {
-      if (isDoctorVerifiedParam !== 'true' && isDoctorVerifiedParam !== 'false') {
-        return NextResponse.json({ message: 'Invalid isDoctorVerified value' }, { status: 400 });
+    let emailVerified: boolean | undefined;
+    if (emailVerifiedAtParam !== null) {
+      if (emailVerifiedAtParam !== 'true' && emailVerifiedAtParam !== 'false') {
+        return NextResponse.json({ message: 'Invalid emailVerifiedAt value' }, { status: 400 });
       }
-      isDoctorVerified = isDoctorVerifiedParam === 'true';
+      emailVerified = emailVerifiedAtParam === 'true';
     }
 
-    // Process isEmailVerified
-    let isEmailVerified: boolean | undefined;
-    if (isEmailVerifiedParam !== null) {
-      if (isEmailVerifiedParam !== 'true' && isEmailVerifiedParam !== 'false') {
-        return NextResponse.json({ message: 'Invalid isEmailVerified value' }, { status: 400 });
+    let doctorVerified: boolean | undefined;
+    if (doctorVerifiedAtParam !== null) {
+      if (doctorVerifiedAtParam !== 'true' && doctorVerifiedAtParam !== 'false') {
+        return NextResponse.json({ message: 'Invalid doctorVerifiedAt value' }, { status: 400 });
       }
-      isEmailVerified = isEmailVerifiedParam === 'true';
+      doctorVerified = doctorVerifiedAtParam === 'true';
     }
 
     // Build where clause
     const whereClause: Prisma.UserWhereInput = {
       ...(role && { role }),
       ...(email && { email: { contains: email, mode: 'insensitive' } }),
-      ...(isDoctorVerified !== undefined && { isDoctorVerified }),
-      ...(isEmailVerified !== undefined && { isEmailVerified }),
+      ...(doctorVerified !== undefined && {
+        doctorVerifiedAt: doctorVerified ? { not: null } : null,
+      }),
+      ...(emailVerified !== undefined && {
+        emailVerifiedAt: emailVerified ? { not: null } : null,
+      }),
       ...((startDate || endDate) && {
         createdAt: {
           ...(startDate && { gte: startDate }),
@@ -227,8 +235,8 @@ export async function GET(req: NextRequest) {
           lastName: true,
           email: true,
           role: true,
-          isDoctorVerified: true,
-          isEmailVerified: true,
+          doctorVerifiedAt: true,
+          emailVerifiedAt: true,
           createdAt: true,
         },
         orderBy:

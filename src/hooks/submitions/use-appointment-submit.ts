@@ -1,7 +1,7 @@
 import { useCreateAppointmentMutation } from '@/lib/api/endpoints/dashboard';
 import { getErrorMessage } from '@/lib/utils/get-error-message';
 import { type AppointmentData } from '@/lib/validations/appointment';
-import { type AppointmentType } from '@generated/client';
+import { type AppointmentType } from '@prisma/client';
 import { toast } from 'sonner';
 
 export const useAppointmentSubmit = () => {

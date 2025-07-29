@@ -4,6 +4,50 @@
     "Home": {
       "title": "Welcome to Noor Medical Center",
       "description": "Where Healing Shines — Comprehensive healthcare services tailored for you."
+    },
+    "Login": {
+      "title": "Login",
+      "description": "Sign in to access the full dashboard and features."
+    },
+    "Register": {
+      "title": "Register",
+      "description": "Join our healthcare community."
+    },
+    "Booking": {
+      "title": "Book an Appointment",
+      "description": "Schedule a consultation with our experienced doctors."
+    },
+    "Dashboard": {
+      "title": "Dashboard",
+      "description": "Welcome to your personalized dashboard."
+    },
+    "AdminAppointments": {
+      "title": "Appointments",
+      "description": "Manage and schedule appointments with our doctors."
+    },
+    "AdminUsers": {
+      "title": "Users",
+      "description": "Manage user accounts and roles."
+    },
+    "VerifyDoctors": {
+      "title": "Verify Doctors",
+      "description": "Review and verify doctor profiles."
+    },
+    "DoctorNotes": {
+      "title": "Doctor Notes",
+      "description": "Add and manage doctor notes."
+    },
+    "DoctorAppointments": {
+      "title": "Appointments",
+      "description": "Manage and schedule appointments with our doctors."
+    },
+    "DoctorAvailability": {
+      "title": "Availability",
+      "description": "Manage your availability and schedule appointments."
+    },
+    "PatientHistory": {
+      "title": "Patient History",
+      "description": "View and manage your medical history."
     }
   },
   "Layout": {
@@ -29,6 +73,7 @@
       "availability": "Availability",
       "history": "History",
       "closeSidebar": "Close Sidebar",
+      "pleaseLoginTitle": "Sign in to access the full dashboard and features.",
       "login": "Login",
       "register": "Register",
       "logout": "Logout",
@@ -67,6 +112,17 @@
       "startTime": "Start Time",
       "endTime": "End Time"
     }
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again or go back to the homepage.",
+    "tryAgain": "Try Again",
+    "backHome": "Back to Home"
+  },
+  "NotFound": {
+    "title": "Page Not Found",
+    "description": "The page you’re looking for doesn’t exist or has been moved.",
+    "backHome": "Back to Home"
   },
   "Login": {
     "backgroundAlt": "Medical background",
@@ -217,8 +273,8 @@
       "email": "Email",
       "role": "Role",
       "createdAt": "Created At",
-      "doctorVerified": "Doctor Verified",
-      "emailVerified": "Email Verified",
+      "doctorVerifiedAt": "Doctor Verified At",
+      "emailVerifiedAt": "Email Verified At",
       "actions": "Actions"
     },
     "Actions": {
@@ -235,8 +291,8 @@
       "email": "Email",
       "role": "Role",
       "createdAt": "Created At",
-      "isDoctorVerified": "Verified Doctors Only",
-      "isEmailVerified": "Verified Emails Only"
+      "doctorVerifiedAt": "Verified Doctors Only",
+      "emailVerifiedAt": "Verified Emails Only"
     },
     "RoleOptions": {
       "all": "All",

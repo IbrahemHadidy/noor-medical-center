@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma/prisma';
-import { Role } from '@generated/client';
+import { Role } from '@prisma/client';
 import { type NextRequest, NextResponse } from 'next/server';
 
 /**
@@ -41,13 +41,13 @@ export async function PATCH(_req: NextRequest, { params }: { params: Promise<{ i
       where: {
         id: userId,
         OR: [
-          { role: Role.DOCTOR, isDoctorVerified: false },
-          { role: Role.PATIENT, isEmailVerified: false },
+          { role: Role.DOCTOR, doctorVerifiedAt: null },
+          { role: Role.PATIENT, emailVerifiedAt: null },
         ],
       },
       data: {
-        isDoctorVerified: true,
-        isEmailVerified: true,
+        doctorVerifiedAt: new Date(),
+        emailVerifiedAt: new Date(),
       },
     });
 

@@ -1,4 +1,4 @@
-import { Gender, Role } from '@generated/client';
+import { Gender, Role } from '@prisma/client';
 import type { useTranslations } from 'next-intl';
 import { z } from 'zod';
 
@@ -45,14 +45,8 @@ export const createRegisterSchema = (t: Translations) => {
       .min(7, t('Errors.phoneTooShort'))
       .regex(/^\+?[0-9]{7,15}$/, t('Errors.invalidPhone'))
       .optional(),
-    gender: z.nativeEnum(Gender, {
-      required_error: t('Errors.genderRequired'),
-      invalid_type_error: t('Errors.invalidGender'),
-    }),
-    role: z.nativeEnum(Role, {
-      required_error: t('Errors.roleRequired'),
-      invalid_type_error: t('Errors.invalidRole'),
-    }),
+    gender: z.enum(Gender, { error: t('Errors.genderRequired') }),
+    role: z.enum(Role, { error: t('Errors.roleRequired') }),
   });
 };
 

@@ -25,7 +25,7 @@ export async function GET() {
     const unverifiedDoctors = await prisma.user.findMany({
       where: {
         role: 'DOCTOR',
-        isDoctorVerified: false,
+        doctorVerifiedAt: null,
       },
       select: {
         id: true,

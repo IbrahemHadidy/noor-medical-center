@@ -1,16 +1,16 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { usePathname, useRouter } from '@/lib/i18n/navigation';
 import { routing } from '@/lib/i18n/routing';
-import { Languages } from 'lucide-react';
-import { type Locale, useLocale } from 'next-intl';
+import { ChevronDown, Languages } from 'lucide-react';
+import { useLocale, type Locale } from 'next-intl';
 
 export function LanguageSelector() {
   const pathname = usePathname();
@@ -22,23 +22,29 @@ export function LanguageSelector() {
     router.push(pathname, { locale: newLocale });
   };
 
-  const localeNames = {
+  const localeNames: Record<Locale, string> = {
     en: 'English',
     ar: 'العربية',
   };
 
   return (
-    <Select onValueChange={changeLocale} defaultValue={locale || defaultLocale}>
-      <SelectTrigger className="hover:bg-accent w-32 transition">
-        <Languages className="mr-2 h-4 w-4" /> <SelectValue placeholder="Language" />
-      </SelectTrigger>
-      <SelectContent>
-        {locales?.map((loc) => (
-          <SelectItem key={loc} value={loc}>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" aria-label="Select language">
+          <div className="flex items-center">
+            <Languages className="me-2 h-4 w-4" />
+            <span>{localeNames[locale] || localeNames[defaultLocale]}</span>
+          </div>
+          <ChevronDown className="ms-2 h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-[128px]">
+        {locales.map((loc) => (
+          <DropdownMenuItem key={loc} onSelect={() => changeLocale(loc)}>
             {localeNames[loc]}
-          </SelectItem>
+          </DropdownMenuItem>
         ))}
-      </SelectContent>
-    </Select>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

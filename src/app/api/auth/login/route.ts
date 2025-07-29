@@ -46,7 +46,7 @@ const JWT_SECRET = process.env.JWT_SECRET as string;
  */
 export async function POST(
   request: NextRequest
-): Promise<NextResponse<SafeUser | { error: string }>> {
+): Promise<NextResponse<(Omit<SafeUser, 'image'> & { image: string | null }) | { error: string }>> {
   const { identifier, password } = await request.json();
 
   // Find user by email or phone
@@ -64,13 +64,10 @@ export async function POST(
       role: true,
       gender: true,
       image: true,
-      isEmailVerified: true,
       emailVerifiedAt: true,
-      isDoctorVerified: true,
       doctorVerifiedAt: true,
       createdAt: true,
       updatedAt: true,
-      isPhoneVerified: true,
       phoneVerifiedAt: true,
       specializations: true,
       passwordReset: true,
@@ -113,14 +110,11 @@ export async function POST(
       phone: user.phone,
       gender: user.gender,
       role: user.role,
-      image: user.image,
-      isEmailVerified: user.isEmailVerified,
+      image: user.image ? Buffer.from(user.image).toString('base64') : null,
       emailVerifiedAt: user.emailVerifiedAt,
-      isDoctorVerified: user.isDoctorVerified,
       doctorVerifiedAt: user.doctorVerifiedAt,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
-      isPhoneVerified: user.isPhoneVerified,
       phoneVerifiedAt: user.phoneVerifiedAt,
       specializations: user.specializations,
       passwordReset: user.passwordReset,

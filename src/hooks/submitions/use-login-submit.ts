@@ -1,3 +1,5 @@
+'use client';
+
 import { useSidebar } from '@/components/ui/sidebar';
 import { useLoginMutation } from '@/lib/api/endpoints/auth';
 import { setUser } from '@/lib/features/auth/auth.slice';

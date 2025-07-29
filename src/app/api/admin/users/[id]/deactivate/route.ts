@@ -41,8 +41,8 @@ export async function PATCH(_req: NextRequest, { params }: { params: Promise<{ i
         id: userId,
       },
       data: {
-        isDoctorVerified: false,
-        isEmailVerified: false,
+        doctorVerifiedAt: null,
+        emailVerifiedAt: null,
       },
     });
 

@@ -49,11 +49,11 @@ export function Logo({ className, loading }: { className?: string; loading?: boo
         <circle cx="940" cy="210" r="59.5" fill="#11509A40" />
 
         <text
-          x={!isRtl ? '265' : '200'}
-          y={!isRtl ? '360' : '320'}
+          x={!isRtl ? '230' : '240'}
+          y={!isRtl ? '360' : '300'}
           textAnchor="start"
           fontFamily="DecoType Thuluth II, cinzel, sans-serif"
-          fontSize="210px"
+          fontSize={!isRtl ? '225px' : '240px'}
           fontWeight="600"
           letterSpacing={!isRtl ? '20px' : undefined}
           fill="currentColor"
@@ -62,11 +62,11 @@ export function Logo({ className, loading }: { className?: string; loading?: boo
           {t('name')}
         </text>
         <text
-          x={!isRtl ? '200' : '280'}
+          x={!isRtl ? '200' : '290'}
           y="440"
           textAnchor="start"
           fontFamily="sans-serif"
-          fontWeight="300"
+          fontWeight={!isRtl ? '300' : '400'}
           fontSize="55px"
           letterSpacing={!isRtl ? '13px' : undefined}
           fill="currentColor"

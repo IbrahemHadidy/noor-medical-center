@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma/prisma';
-import { AppointmentType, type Prisma, Role } from '@generated/client';
+import { AppointmentType, type Prisma, Role } from '@prisma/client';
 import { NextResponse } from 'next/server';
 
 /**

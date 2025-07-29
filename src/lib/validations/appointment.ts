@@ -10,7 +10,7 @@ export const createAppointmentSchema = (t: Translations) => {
       .trim()
       .min(10, { message: t('Errors.reasonMin') }),
     price: z
-      .number({ invalid_type_error: t('Errors.priceRequired') })
+      .number({ error: t('Errors.priceRequired') })
       .min(0, { message: t('Errors.pricePositive') }),
   });
 };

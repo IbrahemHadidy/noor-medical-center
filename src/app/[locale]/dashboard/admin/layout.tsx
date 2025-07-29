@@ -1,5 +1,17 @@
-import { ProtectedAdminRoute } from '@/components/utils/protected-admin-route';
+import { ProtectedRoute } from '@/components/access/protected-route';
+import { Role } from '@prisma/client';
+import type { Locale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 
-export default async function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
-  return <ProtectedAdminRoute>{children}</ProtectedAdminRoute>;
+export default async function AdminDashboardLayout({
+  params,
+  children,
+}: {
+  params: Promise<{ locale: Locale }>;
+  children: React.ReactNode;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  return <ProtectedRoute allowedRoles={[Role.ADMIN]}>{children}</ProtectedRoute>;
 }

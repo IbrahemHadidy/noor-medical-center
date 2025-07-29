@@ -1,6 +1,6 @@
 import type { Appointment, AppointmentRow, NextAppointment } from '@/lib/types/appointement';
 import type { SafeDoctor } from '@/lib/types/user';
-import type { AppointmentStatus, AppointmentType } from '@generated/client';
+import type { AppointmentStatus, AppointmentType } from '@prisma/client';
 import { mainApi } from '../main-api';
 
 export const dashboardApi = mainApi.injectEndpoints({

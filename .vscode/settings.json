@@ -12,5 +12,11 @@
   "material-icon-theme.activeIconPack": "react_redux",
   "i18n-ally.localesPaths": ["src/locales"],
   "i18n-ally.sourceLanguage": "en",
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.keystyle": "nested",
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  }
 }

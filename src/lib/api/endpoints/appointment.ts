@@ -5,7 +5,7 @@ import type {
   GetAppointmentsParams,
   PatientHistoryResponse,
 } from '@/lib/types/appointement';
-import type { Appointment } from '@generated/client';
+import type { Appointment } from '@prisma/client';
 import { mainApi } from '../main-api';
 
 export const appointmentApi = mainApi.injectEndpoints({

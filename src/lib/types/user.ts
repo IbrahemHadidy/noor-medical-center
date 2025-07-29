@@ -1,4 +1,4 @@
-import type { Prisma, Role } from '@generated/client';
+import type { Prisma, Role } from '@prisma/client';
 
 export type UserWithAllRelations = Prisma.UserGetPayload<{
   include: {
@@ -43,8 +43,8 @@ export type GetUsersParams = {
   role?: Role;
   name?: string;
   email?: string;
-  isDoctorVerified?: boolean;
-  isEmailVerified?: boolean;
+  doctorVerifiedAt?: boolean;
+  emailVerifiedAt?: boolean;
   startDate?: string;
   endDate?: string;
 };

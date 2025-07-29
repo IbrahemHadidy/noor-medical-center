@@ -1,4 +1,4 @@
-import type { DoctorAvailability } from '@generated/client';
+import type { DoctorAvailability } from '@prisma/client';
 import { mainApi } from '../main-api';
 
 export const availabilityApi = mainApi.injectEndpoints({

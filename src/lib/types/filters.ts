@@ -5,7 +5,7 @@ export type AdminUsersFilters =
   | 'email'
   | 'role'
   | 'date'
-  | 'isDoctorVerified'
-  | 'isEmailVerified';
+  | 'doctorVerifiedAt'
+  | 'emailVerifiedAt';
 
 export type PatienHistoryFilters = 'doctor' | 'status' | 'type' | 'scheduledFor';

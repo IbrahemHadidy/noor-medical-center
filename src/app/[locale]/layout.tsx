@@ -1,17 +1,18 @@
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { Sidebar } from '@/components/layout/sidebar';
-import { StoreProvider } from '@/components/store-provider';
+import { StoreProvider } from '@/components/providers/store-provider';
 import { SidebarProvider } from '@/components/ui/sidebar';
+import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { routing } from '@/lib/i18n/routing';
 import { cn } from '@/lib/utils/cn';
+import '@/styles/globals.css';
 import { hasLocale, NextIntlClientProvider, type Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
 import { Cairo, IBM_Plex_Sans, IBM_Plex_Sans_Arabic, Open_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import '../globals.css';
 
 const ibm = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -69,6 +70,7 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <Toaster richColors />
             <StoreProvider>
               <TooltipProvider delayDuration={0}>
                 <SidebarProvider defaultOpen={false} className="flex w-full">

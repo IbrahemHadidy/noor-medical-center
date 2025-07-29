@@ -5,7 +5,7 @@ import { MapPin, Phone } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import contactBg from '@/assets/contact-bg.webp';
+import contactBg from '@/assets/images/contact-bg.webp';
 
 export function Contact() {
   const t = useTranslations('Home.Contact');

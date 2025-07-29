@@ -42,7 +42,7 @@ export async function PATCH(_req: NextRequest, { params }: { params: Promise<{ i
         role: 'DOCTOR',
       },
       data: {
-        isDoctorVerified: true,
+        doctorVerifiedAt: new Date(),
       },
     });
 

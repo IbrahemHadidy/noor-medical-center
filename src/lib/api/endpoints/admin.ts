@@ -5,7 +5,7 @@ import type {
 } from '@/lib/types/appointement';
 import type { AdminStats } from '@/lib/types/dashboard';
 import type { GetUsersParams, PaginatedUsers, SafeUser } from '@/lib/types/user';
-import type { AppointmentStatus } from '@generated/client';
+import type { AppointmentStatus } from '@prisma/client';
 import { mainApi } from '../main-api';
 
 export const adminApi = mainApi.injectEndpoints({

@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma/prisma';
 import { getSession } from '@/lib/utils/auth';
 import getTodayDateRange from '@/lib/utils/get-today-date-range';
-import { AppointmentStatus, Role } from '@generated/client';
+import { AppointmentStatus, Role } from '@prisma/client';
 import { NextResponse } from 'next/server';
 
 /**

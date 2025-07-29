@@ -1,9 +1,21 @@
-import { ProtectedPatientRoute } from '@/components/utils/protected-patient-route';
+import { ProtectedRoute } from '@/components/access/protected-route';
+import { Role } from '@prisma/client';
+import type { Locale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 
-export default async function AppointmentsLayout({ children }: { children: React.ReactNode }) {
+export default async function AppointmentsLayout({
+  params,
+  children,
+}: {
+  params: Promise<{ locale: Locale }>;
+  children: React.ReactNode;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
-    <ProtectedPatientRoute>
-      <main className="container mx-auto flex-grow">{children}</main>{' '}
-    </ProtectedPatientRoute>
+    <ProtectedRoute allowedRoles={[Role.PATIENT]}>
+      <main className="container mx-auto flex-grow">{children}</main>
+    </ProtectedRoute>
   );
 }

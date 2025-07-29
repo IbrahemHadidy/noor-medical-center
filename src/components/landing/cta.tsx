@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import ctaBg from '@/assets/cta-bg.webp';
+import ctaBg from '@/assets/images/cta-bg.webp';
 
 export function CTA() {
   const t = useTranslations('Home.CTA');

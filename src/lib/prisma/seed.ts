@@ -6,7 +6,7 @@ import {
   type Prisma,
   Role,
   type User,
-} from '@generated/client';
+} from '@prisma/client';
 import chalk from 'chalk';
 import { createSaltedHash } from '../utils/encryption';
 import { prismaWithLogging as prisma } from './prisma';
@@ -89,6 +89,7 @@ class DatabaseSeeder {
   private async createAdmin() {
     console.info(chalk.blue('\nCreating admin...'));
     this.admin = await this.safeCreate(async () => {
+      const verificationDate = faker.date.soon({ days: 30 });
       const adminUser = await prisma.user.create({
         data: {
           email: 'ibrahim.elhadidy@noormedical.com',
@@ -97,8 +98,8 @@ class DatabaseSeeder {
           lastName: 'Elhadidy',
           role: Role.ADMIN,
           gender: Gender.MALE,
-          isEmailVerified: true,
-          isDoctorVerified: true,
+          emailVerifiedAt: verificationDate,
+          doctorVerifiedAt: verificationDate,
         },
       });
 
@@ -135,8 +136,8 @@ class DatabaseSeeder {
           lastName: 'Al-Imran',
           role: Role.DOCTOR,
           gender: Gender.FEMALE,
-          isEmailVerified: true,
-          isDoctorVerified: true,
+          emailVerifiedAt: faker.date.soon({ days: 30 }),
+          doctorVerifiedAt: faker.date.soon({ days: 30 }),
           specializations: {
             create: [
               { type: AppointmentType.CARDIOLOGY },
@@ -246,8 +247,8 @@ class DatabaseSeeder {
         lastName: faker.person.lastName().slice(0, 99),
         role: Role.DOCTOR,
         gender: faker.helpers.enumValue(Gender),
-        isEmailVerified: true,
-        isDoctorVerified: isVerified,
+        emailVerifiedAt: faker.date.soon({ days: 30 }),
+        doctorVerifiedAt: isVerified ? faker.date.soon({ days: 30 }) : null,
         specializations: {
           create: specializationArray.map((type) => ({ type })),
         },
@@ -309,7 +310,7 @@ class DatabaseSeeder {
           lastName: faker.person.lastName().slice(0, 99),
           role: Role.PATIENT,
           gender: faker.helpers.enumValue(Gender),
-          isEmailVerified: faker.datatype.boolean(),
+          emailVerifiedAt: faker.date.soon({ days: 30 }),
         });
       }
 
@@ -371,7 +372,7 @@ class DatabaseSeeder {
         max: this.CONFIG.appointmentsPerPatient.max,
       });
 
-      if (patient.isEmailVerified) {
+      if (patient.emailVerifiedAt) {
         const doneAppointment = await this.createAppointment(patient, AppointmentStatus.DONE);
         const scheduledAppointment = await this.createAppointment(
           patient,
@@ -476,10 +477,10 @@ class DatabaseSeeder {
       chalk.bold.green(`\nDatabase seeded successfully in ${duration.toFixed(2)} seconds!`)
     );
 
-    const verifiedDoctors = this.doctors.filter((d) => d.isDoctorVerified);
-    const unverifiedDoctors = this.doctors.filter((d) => !d.isDoctorVerified);
-    const verifiedPatients = this.patients.filter((p) => p.isEmailVerified);
-    const unverifiedPatients = this.patients.filter((p) => !p.isEmailVerified);
+    const verifiedDoctors = this.doctors.filter((d) => d.doctorVerifiedAt);
+    const unverifiedDoctors = this.doctors.filter((d) => !d.doctorVerifiedAt);
+    const verifiedPatients = this.patients.filter((p) => p.emailVerifiedAt);
+    const unverifiedPatients = this.patients.filter((p) => !p.emailVerifiedAt);
 
     console.info(chalk.bold.cyan('\n=== Admin Account ==='));
     console.info(chalk.white(`- Email: ${chalk.yellow('ibrahim.elhadidy@noormedical.com')}`));

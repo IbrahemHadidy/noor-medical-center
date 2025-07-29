@@ -7,6 +7,7 @@ import { Testimonials } from '@/components/landing/testimonials';
 import { WhyChooseUs } from '@/components/landing/why-choose-us';
 import generatePageMetadata from '@/lib/utils/generate-page-metadata';
 import type { Locale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -18,7 +19,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   });
 }
 
-export default function HomePage() {
+export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="flex flex-col items-center">
       <Hero />

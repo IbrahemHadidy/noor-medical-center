@@ -6,7 +6,7 @@ import { HeartPulse, Scan, Stethoscope, Syringe } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-import servicesBg from '@/assets/services-bg.webp';
+import servicesBg from '@/assets/images/services-bg.webp';
 
 interface Service {
   key: keyof typeof en.Home.Services.Items;

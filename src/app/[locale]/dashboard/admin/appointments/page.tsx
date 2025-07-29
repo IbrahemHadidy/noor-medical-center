@@ -1,5 +1,25 @@
-import { AdminAppointments } from '@/components/admin/appointments/admin-appointments';
+import AdminAppointments from '@/components/pages/dashboard/admin/appointments/index';
+import generatePageMetadata from '@/lib/utils/generate-page-metadata';
+import type { Locale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 
-export default function AdminAppointmentsPage() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+
+  return generatePageMetadata({
+    locale,
+    namespace: 'Metadata.AdminAppointments',
+    path: '/dashboard/admin/appointments',
+  });
+}
+
+export default async function AdminAppointmentsPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return <AdminAppointments />;
 }
