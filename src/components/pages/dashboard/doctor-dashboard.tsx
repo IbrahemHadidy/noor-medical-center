@@ -24,6 +24,8 @@ interface Props {
   isVerified: boolean;
 }
 
+const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#a4de6c'];
+
 export function DoctorDashboard({ data = [], isVerified }: Props) {
   const t = useTranslations('Dashboard');
 
@@ -123,7 +125,7 @@ export function DoctorDashboard({ data = [], isVerified }: Props) {
                   labelLine={false}
                 >
                   {typeData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
                 <Tooltip formatter={(value) => [value, t('Doctor.Chart.appointments')]} />

@@ -10,31 +10,31 @@ import { DisplayModeSelector } from './display-mode-selector';
 import { LanguageSelector } from './language-selector';
 
 export function Header() {
-  const { state, isMobile, toggleSidebar } = useSidebar();
+  const { open, openMobile, isMobile, toggleSidebar } = useSidebar();
 
   return (
     <header className="bg-background/70 sticky top-0 z-50 flex w-full items-center justify-between p-4 shadow-md backdrop-blur-md transition-all duration-300">
-      {!isMobile && (
-        <Button
-          variant="outline"
-          size="icon"
-          className={cn(
-            'cursor-pointer bg-transparent transition duration-300 ease-in-out',
-            state === 'expanded' ? 'pointer-events-none opacity-0' : ''
-          )}
-          onClick={toggleSidebar}
-        >
-          <PanelLeftIcon />
-        </Button>
-      )}
+      <Button
+        variant="outline"
+        size="icon"
+        className={cn(
+          'cursor-pointer bg-transparent transition duration-300 ease-in-out',
+          isMobile && openMobile && 'pointer-events-none opacity-0',
+          !isMobile && open && 'pointer-events-none opacity-0'
+        )}
+        onClick={toggleSidebar}
+      >
+        <PanelLeftIcon />
+      </Button>
 
       {/* Centered Logo */}
       <Link
         href="/"
         className={cn(
           'transition duration-300 ease-in-out',
-          'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
-          state === 'expanded' ? 'pointer-events-none opacity-0' : ''
+          'max-md:mx-auto max-md:-mt-3.5 max-md:h-10 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2',
+          isMobile && openMobile && 'pointer-events-none opacity-0',
+          !isMobile && open && 'pointer-events-none opacity-0'
         )}
         aria-label="Homepage"
       >

@@ -21,11 +21,10 @@ export const createRegisterSchema = (t: Translations) => {
       })
       .refine((val) => val.length > 0, { message: t('Errors.requiredField') }),
     email: z
-      .string()
-      .trim()
       .email({
         message: t('Errors.invalidEmail'),
       })
+      .trim()
       .refine((val) => val.length > 0, { message: t('Errors.requiredField') }),
     password: z
       .string()

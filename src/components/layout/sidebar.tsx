@@ -146,9 +146,9 @@ export function Sidebar() {
         {isMobile && (
           <>
             <Separator />
-            <div className="mt-4 flex flex-col gap-4 px-4">
+            <div className="flex w-full flex-col justify-between gap-2 px-2">
               <LanguageSelector />
-              <DisplayModeSelector />
+              <DisplayModeSelector withLabel />
             </div>
           </>
         )}

@@ -40,11 +40,11 @@ export default function Login() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm dark:bg-black/60" />
+        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm dark:bg-black/60 max-md:dark:bg-black/90" />
       </div>
 
       {/* Form Card */}
-      <div className="bg-card relative z-10 w-full max-w-md space-y-6 rounded-2xl border p-8 shadow-xl">
+      <div className="md:bg-card relative z-10 w-full max-w-md space-y-6 rounded-2xl p-8 md:border md:shadow-xl">
         <div className="space-y-2 text-center">
           <Stethoscope className="text-primary mx-auto h-12 w-12" aria-hidden="true" />
           <h1 className="text-foreground text-3xl font-bold">{t('title')}</h1>
