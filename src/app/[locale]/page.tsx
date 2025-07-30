@@ -1,10 +1,4 @@
-import { About } from '@/components/landing/about';
-import { Contact } from '@/components/landing/contact';
-import { CTA } from '@/components/landing/cta';
-import { Hero } from '@/components/landing/hero';
-import { Services } from '@/components/landing/services';
-import { Testimonials } from '@/components/landing/testimonials';
-import { WhyChooseUs } from '@/components/landing/why-choose-us';
+import Home from '@/components/pages/home';
 import generatePageMetadata from '@/lib/utils/generate-page-metadata';
 import type { Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
@@ -23,15 +17,5 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return (
-    <main className="flex flex-col items-center">
-      <Hero />
-      <About />
-      <Services />
-      <WhyChooseUs />
-      <Testimonials />
-      <Contact />
-      <CTA />
-    </main>
-  );
+  return <Home />;
 }

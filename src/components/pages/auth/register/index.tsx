@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import medicalBg from '@/assets/images/auth-bg.webp';
 
@@ -40,7 +40,8 @@ export default function Register() {
   const t = useTranslations('Register');
   const locale = useLocale();
   const { handleRegister, isLoading, error } = useRegisterSubmit();
-  const form = useFormWithValidation<RegisterData>(createRegisterSchema(t));
+  const schema = useMemo(() => createRegisterSchema(t), [t]);
+  const form = useFormWithValidation<RegisterData>(schema);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const isRtl = locale === 'ar';
@@ -52,8 +53,7 @@ export default function Register() {
         <Image
           src={medicalBg}
           alt={t('backgroundAlt')}
-          placeholder="blur"
-          quality={80}
+          priority
           fill
           sizes="100vw"
           className="object-cover object-center"
