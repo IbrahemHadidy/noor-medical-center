@@ -3,7 +3,6 @@ import { AppointmentWithDoctor } from '@/lib/types/appointement';
 import type { ColumnDef } from '@tanstack/react-table';
 import { format } from 'date-fns';
 import { useTranslations } from 'next-intl';
-import { ActionsColumn } from './actions-column';
 
 export function columns(
   t: ReturnType<typeof useTranslations<'PatientHistory'>>
@@ -37,15 +36,6 @@ export function columns(
       header: ({ column }) => <DataTableColumnHeader column={column} title={t('Columns.status')} />,
       cell: ({ row }) => t(`Status.${row.original.status}`),
       enableSorting: true,
-    },
-    {
-      id: 'actions',
-      accessorKey: t('Columns.actions'),
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title={t('Columns.actions')} />
-      ),
-      cell: ({ row }) => <ActionsColumn appointment={row.original} />,
-      enableSorting: false,
     },
   ];
 }
