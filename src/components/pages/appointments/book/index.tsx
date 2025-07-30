@@ -1,6 +1,7 @@
 'use client';
 
 import { SingleDatePicker } from '@/components/ui/date-picker';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -78,11 +79,11 @@ export default function Booking() {
 
       {/* 1. Select Specialty */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <Label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
           {t('specialtyLabel')}
-        </label>
+        </Label>
         <Select onValueChange={handleSpecialtySelect} value={selectedSpecialty || ''}>
-          <SelectTrigger className="mt-1 block w-full">
+          <SelectTrigger className="mt-1 flex w-full">
             <SelectValue placeholder={t('selectSpecialty')} />
           </SelectTrigger>
           <SelectContent>
@@ -102,9 +103,9 @@ export default function Booking() {
 
       {doctorId && (
         <div className="mb-4">
-          <label htmlFor="date" className="block text-sm font-medium">
+          <Label htmlFor="date" className="block text-sm font-medium">
             {t('dateLabel')}
-          </label>
+          </Label>
           <SingleDatePicker
             value={new Date(date)}
             onChange={handleDateChange}

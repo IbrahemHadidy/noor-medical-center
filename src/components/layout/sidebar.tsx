@@ -138,7 +138,7 @@ export function Sidebar() {
   };
 
   return (
-    <SidebarContainer side={isRTL ? 'right' : 'left'} className="z-100 flex flex-row">
+    <SidebarContainer side={isRTL ? 'right' : 'left'} className="flex flex-row">
       <SidebarHeader>
         <Link href="/" className="flex w-full justify-center">
           <Logo className="h-24 w-auto" />
@@ -243,7 +243,7 @@ export function Sidebar() {
                   )}
                 </Button>
               </TooltipTrigger>
-              <TooltipContent className="z-1000">
+              <TooltipContent>
                 <p className="text-foreground">{t('logout')}</p>
               </TooltipContent>
             </Tooltip>

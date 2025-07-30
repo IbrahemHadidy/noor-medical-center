@@ -79,7 +79,7 @@ export default function DoctorSelector({ onDoctorSelect, specialty }: DoctorSele
       >
         <SelectTrigger
           id="doctor-select"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+          className="mt-1 w-full rounded-md border-gray-300 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-white"
         >
           <SelectValue placeholder={t('selectDoctor')}>{selectedDoctorName}</SelectValue>
         </SelectTrigger>
